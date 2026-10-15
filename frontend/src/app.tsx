@@ -23,8 +23,8 @@ const EditEvent = lazy(
   () => import("@/pages/events/edit-event") as Promise<{ default: ComponentType<{ userData: unknown }> }>,
 )
 const EventContract = lazy(() => import("@/pages/events/event-contract"))
-const Profile = lazy(() => import("@/profile/profile"))
-const Settings = lazy(() => import("@/settings/settings"))
+const Profile = lazy(() => import("@/pages/profile/profile"))
+const Settings = lazy(() => import("@/pages/settings/settings"))
 const Supplier = lazy(() => import("@/pages/suppliers/supplier"))
 const SupplierShop = lazy(() => import("@/pages/suppliers/supplier-shop"))
 const Analytics = lazy(() => import("@/pages/analytics/analytics"))
