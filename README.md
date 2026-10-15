@@ -1,4 +1,27 @@
+<div align="center">
+
+<img src="docs/assets/eventpro-logo.svg" alt="EventPro logo" width="140" />
+
 # EventPro
+
+**Connect event organizers with suppliers — from discovery to delivery.**
+
+[![CI](https://github.com/christian0162/eventpro/actions/workflows/ci.yml/badge.svg)](https://github.com/christian0162/eventpro/actions/workflows/ci.yml)
+![Version](https://img.shields.io/badge/version-0.0.0-blue)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=nodedotjs&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?logo=fastapi&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-Firestore-FFCA28?logo=firebase&logoColor=black)
+
+</div>
+
+## Components
+
+| | Component | Package | Version | Stack | Path |
+| --- | --- | --- | --- | --- | --- |
+| <img src="docs/assets/eventpro-logo.svg" width="32" /> | **Frontend** | `eventpro-frontend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | React 19 · Vite | [`EventPro-frontend/`](EventPro-frontend) |
+| <img src="docs/assets/eventpro-logo.svg" width="32" /> | **Delivery Backend** | `eventpro-nodejs-backend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | Node.js · Express | [`EventPro-backend/nodejs_backend/`](EventPro-backend/nodejs_backend) |
+| <img src="docs/assets/eventpro-logo.svg" width="32" /> | **Payments & AI Backend** | `eventpro-python-backend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | Python · FastAPI | [`EventPro-backend/python_backend/`](EventPro-backend/python_backend) |
 
 EventPro is a web platform that connects event organizers with suppliers (catering, venues, equipment, etc.), covering the full flow from discovery and booking to contracts, payments, delivery logistics, and reviews.
 
@@ -96,6 +119,51 @@ A `Dockerfile` is provided for containerized deployment.
 cd EventPro-frontend
 npm run test
 ```
+
+Lint and build checks:
+
+```bash
+npm run lint
+npm run build
+```
+
+## Continuous Integration
+
+GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs on every push to `main` and on every pull request:
+
+| Job | Checks |
+| --- | --- |
+| `frontend` | `npm ci`, lint, test, production build |
+| `nodejs-backend` | dependency install, syntax check of `server.js` |
+| `python-backend` | `pip install -r requirements.txt`, byte-compile all modules |
+
+Pull requests should pass all jobs before merging.
+
+## Versioning & Releases
+
+EventPro follows [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`):
+
+- **MAJOR** — breaking changes (API contract, data model)
+- **MINOR** — backwards-compatible features
+- **PATCH** — backwards-compatible bug fixes
+
+Notable changes are recorded in [CHANGELOG.md](CHANGELOG.md) following [Keep a Changelog](https://keepachangelog.com/). Releases are tagged on `main` as `vX.Y.Z`:
+
+```bash
+git tag -a v1.0.0 -m "Release v1.0.0"
+git push origin v1.0.0
+```
+
+## Contributing
+
+1. Branch from `main` using a descriptive name (`feat/…`, `fix/…`, `docs/…`).
+2. Write commits using [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`, `chore:`, …).
+3. Make sure lint, tests, and build pass locally.
+4. Open a pull request against `main`; CI must pass before merge.
+
+## Security
+
+Never commit `.env` files, Firebase service account keys, or API credentials (Xendit, Lalamove, Gemini). Report vulnerabilities privately to the maintainers rather than opening a public issue.
 
 ## License
 
