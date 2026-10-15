@@ -6,10 +6,12 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth"
 import { forgotPasswordSchema, type ForgotPasswordValues } from "@/lib/validations/auth"
 import { friendlyFirebaseError } from "@/lib/firebase-errors"
 import { notify } from "@/lib/notify"
-import { AuthCard } from "@/features/auth/AuthCard"
+import { AuthSplit } from "@/features/auth/AuthSplit"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+
+const labelClass = "text-xs font-medium uppercase tracking-wider text-muted-foreground"
 
 export default function ForgotPassword() {
   const navigate = useNavigate()
@@ -29,7 +31,7 @@ export default function ForgotPassword() {
   }
 
   return (
-    <AuthCard
+    <AuthSplit
       title="Reset your password"
       description="Enter your email and we'll send you a link to choose a new password."
       footer={
@@ -40,25 +42,25 @@ export default function ForgotPassword() {
     >
       <Title>Forgot password | EventPro</Title>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" noValidate>
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className={labelClass}>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" autoComplete="email" placeholder="Email address" {...field} />
+                  <Input type="email" autoComplete="email" placeholder="Email address" className="h-11 rounded-full px-4" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+          <Button type="submit" size="lg" className="h-11 w-full rounded-full" disabled={form.formState.isSubmitting}>
             {form.formState.isSubmitting ? "Sending…" : "Send reset email"}
           </Button>
         </form>
       </Form>
-    </AuthCard>
+    </AuthSplit>
   )
 }

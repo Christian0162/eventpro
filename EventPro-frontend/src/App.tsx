@@ -53,7 +53,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Public {...session}><HomePage user={user} /></Public>} />
             <Route path="/register" element={<Public {...session}><Register user={user} /></Public>} />
-            <Route path="/forgot-password" element={<Public {...session}><ForgotPassword /></Public>} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<Public {...session}><ResetPassword /></Public>} />
             <Route
               path="/login"
