@@ -115,17 +115,26 @@ input::-ms-clear {
 }
 
 /* Thin scrollbars inside dialogs */
-[data-slot="dialog-content"] {
+[data-slot="dialog-content"],
+[data-slot="dialog-content"] * {
   scrollbar-width: thin;
   scrollbar-color: oklch(0.8 0.02 255) transparent;
 }
-[data-slot="dialog-content"]::-webkit-scrollbar {
+[data-slot="dialog-content"]::-webkit-scrollbar,
+[data-slot="dialog-content"] *::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
-[data-slot="dialog-content"]::-webkit-scrollbar-track {
+[data-slot="dialog-content"]::-webkit-scrollbar-track,
+[data-slot="dialog-content"] *::-webkit-scrollbar-track {
   background: transparent;
 }
-[data-slot="dialog-content"]::-webkit-scrollbar-thumb {
+[data-slot="dialog-content"]::-webkit-scrollbar-thumb,
+[data-slot="dialog-content"] *::-webkit-scrollbar-thumb {
   background: oklch(0.8 0.02 255);
   border-radius: 9999px;
+}
+[data-slot="dialog-content"]::-webkit-scrollbar-button,
+[data-slot="dialog-content"] *::-webkit-scrollbar-button {
+  display: none;
 }

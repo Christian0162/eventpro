@@ -36,7 +36,7 @@ interface Item {
 
 const itemClass = ({ isActive }: { isActive: boolean }) =>
   cn(
-    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium transition-colors",
     isActive
       ? "bg-primary/10 text-primary"
       : "text-muted-foreground hover:bg-card/70 hover:text-foreground",
@@ -109,8 +109,8 @@ export default function AppSidebar({
           <div className="mb-3 flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
             <Sparkles className="size-5" />
           </div>
-          <p className="text-sm font-semibold text-foreground">Planning an event?</p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="text-[13px] font-semibold text-foreground">Planning an event?</p>
+          <p className="mt-1 text-[11px] text-muted-foreground">
             Create your event and get matched with the best suppliers in your area.
           </p>
           <Link
@@ -145,7 +145,7 @@ export default function AppSidebar({
           <Headphones className="size-4" />
         </span>
         {!collapsed && (
-          <span className="text-xs leading-tight">
+          <span className="text-[11px] leading-tight">
             <span className="block font-semibold text-foreground">Need help?</span>
             support@eventpro.com
           </span>

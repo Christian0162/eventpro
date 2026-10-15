@@ -39,9 +39,7 @@ export default function EventBookingModal({ events = [], activeContracts = [], s
         <>
             <Button
                 onClick={open}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
-                text-white font-semibold py-2 px-5 rounded-xl shadow-md hover:shadow-lg 
-                transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="rounded-lg bg-indigo-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
                 Book Supplier
             </Button>
