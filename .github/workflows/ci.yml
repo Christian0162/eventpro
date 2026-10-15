@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: EventPro-frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: EventPro-frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+
+  nodejs-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: EventPro-backend/nodejs_backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - run: npm install
+      - run: node --check server.js
+
+  python-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: EventPro-backend/python_backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: EventPro-backend/python_backend/requirements.txt
+      - run: pip install -r requirements.txt
+      - run: python -m compileall -q .
