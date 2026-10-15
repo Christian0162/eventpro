@@ -2,7 +2,7 @@ import type { ReactNode } from "react"
 import type { User } from "firebase/auth"
 import NavBar from "@/components/organisms/nav-bar"
 import Footer from "@/components/organisms/footer"
-import type { UserData } from "@/stores/useSessionStore"
+import type { UserData } from "@/types/session"
 
 interface Props {
   children: ReactNode

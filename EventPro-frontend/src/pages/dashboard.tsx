@@ -1,6 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
-import EventDashboard from "./events/EventDashboard"
-import SupplierDashboard from "./suppliers/SupplierDashboard"
+import EventDashboard from "./events/event-dashboard"
+import SupplierDashboard from "./suppliers/supplier-dashboard"
 import { Navigate } from "react-router-dom";
 import Loading from "@/components/atoms/loading";
 

@@ -1,9 +1,9 @@
 import type { ReactNode } from "react"
 import { Navigate } from "react-router-dom"
 import type { User } from "firebase/auth"
-import AuthLayout from "@/layouts/AuthLayout"
-import GuestLayout from "@/layouts/GuestLayout"
-import type { UserData } from "@/stores/useSessionStore"
+import AuthLayout from "@/layouts/auth-layout"
+import GuestLayout from "@/layouts/guest-layout"
+import type { UserData } from "@/types/session"
 
 interface SessionProps {
   user: User | null

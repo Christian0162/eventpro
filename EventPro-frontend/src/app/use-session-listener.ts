@@ -3,7 +3,8 @@ import { onAuthStateChanged } from "firebase/auth"
 import { doc, onSnapshot, type Unsubscribe } from "firebase/firestore"
 import { auth, db } from "@/firebase/firebase"
 import { setupUserPresence } from "@/firebase/presence"
-import { useSessionStore, type UserData } from "@/stores/useSessionStore"
+import { useSessionStore } from "@/stores/use-session-store"
+import type { UserData } from "@/types/session"
 
 /**
  * Subscribes to Firebase auth and the signed-in user's profile document.

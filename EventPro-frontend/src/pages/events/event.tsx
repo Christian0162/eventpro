@@ -7,16 +7,16 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { collection, onSnapshot, serverTimestamp, addDoc, query, where, doc, getDocs, deleteDoc } from "firebase/firestore";
 import { ClipLoader } from "react-spinners";
 import Swal from "sweetalert2";
-import { useFetchEvents } from "../../hooks/useEvents";
-import { useDeleteEvent } from "../../hooks/useEvents";
+import { useFetchEvents } from "../../hooks/use-events";
+import { useDeleteEvent } from "../../hooks/use-events";
 import { useNavigate } from "react-router-dom";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
-import { useFetchAllApplication } from "../../hooks/useApplication";
+import { useFetchAllApplication } from "../../hooks/use-application";
 import PageLoading from "@/components/atoms/page-loading";
 import { eventStatusStyles } from "../../constants/categories";
-import { useFetchContract } from "../../hooks/useContract";
-import { useFetchAllTransaction } from "../../hooks/useTransaction";
-import { useFetchSuppliers, useFetchSupplierServices } from "../../hooks/useSupplier";
+import { useFetchContract } from "../../hooks/use-contract";
+import { useFetchAllTransaction } from "../../hooks/use-transaction";
+import { useFetchSuppliers, useFetchSupplierServices } from "../../hooks/use-supplier";
 
 
 export default function Event({ userData }: LegacyProps) {

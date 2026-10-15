@@ -6,7 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 import { X, Calendar, Tag, Send } from "lucide-react";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
 import AddressAutoComplete from "@/components/molecules/address-auto-complete";
-import { useAddEvent } from "../../hooks/useEvents";
+import { useAddEvent } from "../../hooks/use-events";
 import { EventTypeOptions, SupplierOptions } from "../../constants/categories";
 import { Title } from "react-head";
 import Swal from "sweetalert2";

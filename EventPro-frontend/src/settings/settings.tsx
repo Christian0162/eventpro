@@ -10,13 +10,13 @@ import bcrypt from 'bcryptjs';
 import DeactivateModal from '@/components/organisms/deactivate-modal';
 import EmailVerificationModal from '@/components/organisms/email-verification-modal';
 import { paymentMethods } from '../constants/categories';
-import { useCreatePayout } from '../hooks/usePayout';
+import { useCreatePayout } from '../hooks/use-payout';
 import { CircleAlert } from 'lucide-react';
-import { useFetchTransactionById } from '../hooks/useTransaction';
+import { useFetchTransactionById } from '../hooks/use-transaction';
 import { formatDistanceToNow } from 'date-fns';
 import LoadingOverlay from '@/components/atoms/loading-overlay';
 import { UpdateProfile } from '@/components/organisms/update-modal';
-import { useFetchUserProfileById } from '../hooks/useProfile';
+import { useFetchUserProfileById } from '../hooks/use-profile';
 import PageLoading from '@/components/atoms/page-loading';
 import { Title } from 'react-head';
 

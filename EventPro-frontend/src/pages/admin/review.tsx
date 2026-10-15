@@ -10,8 +10,8 @@ import { FileText } from "lucide-react";
 import Swal from "sweetalert2";
 import { RejectReview } from "@/components/organisms/review-modal";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
-import { useFetchUsers } from "../../hooks/useUsers";
-import { useFetchAllVerification } from "../../hooks/useVerification";
+import { useFetchUsers } from "../../hooks/use-users";
+import { useFetchAllVerification } from "../../hooks/use-verification";
 import PageLoading from "@/components/atoms/page-loading";
 
 export default function Review({ userData }: LegacyProps) {

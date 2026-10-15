@@ -12,7 +12,7 @@ import { SupplierOptions, idOptions, documentOptions, exampleIds, exampleDocumen
 import Swal from "sweetalert2";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
 import PageLoading from "@/components/atoms/page-loading";
-import { useFetchSuppliers } from "../../hooks/useSupplier";
+import { useFetchSuppliers } from "../../hooks/use-supplier";
 
 export default function Verification({ userData }: LegacyProps) {
 

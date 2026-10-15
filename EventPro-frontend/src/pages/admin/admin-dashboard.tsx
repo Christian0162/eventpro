@@ -5,14 +5,14 @@ import { Users, IdCard, Calendar, BarChart3, ChartNoAxesCombined, TrendingUp, Al
 import { Tab, TabList, TabPanels, TabGroup, TabPanel } from "@headlessui/react";
 import { PieChart, BarChart, LineChart } from "@/components/molecules/charts";
 import PageLoading from "@/components/atoms/page-loading";
-import { useFetchAllVerification } from "../../hooks/useVerification";
-import { useFetchUsers } from "../../hooks/useUsers";
-import { useFetchSuppliers } from "../../hooks/useSupplier";
-import { useFetchEvents } from "../../hooks/useEvents";
-import { useFetchAllTransaction } from "../../hooks/useTransaction";
-import { useFetchContract } from "../../hooks/useContract";
+import { useFetchAllVerification } from "../../hooks/use-verification";
+import { useFetchUsers } from "../../hooks/use-users";
+import { useFetchSuppliers } from "../../hooks/use-supplier";
+import { useFetchEvents } from "../../hooks/use-events";
+import { useFetchAllTransaction } from "../../hooks/use-transaction";
+import { useFetchContract } from "../../hooks/use-contract";
 import GenerateReport from "@/components/organisms/generate-report";
-import { useFetchAllReports } from "../../hooks/useReports";
+import { useFetchAllReports } from "../../hooks/use-reports";
 import { ReportReview } from "@/components/organisms/review-modal";
 import { statusStyles } from "../../constants/categories";
 

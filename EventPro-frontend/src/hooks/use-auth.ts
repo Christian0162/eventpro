@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc, serverTimestamp, updateDoc } from "firebase/firestore";
-import { useFetchUsers } from "./useUsers";
-import { useFetchEvents } from "./useEvents";
-import { useFetchSuppliers } from "./useSupplier";
+import { useFetchUsers } from "./use-users";
+import { useFetchEvents } from "./use-events";
+import { useFetchSuppliers } from "./use-supplier";
 import { db } from "../firebase/firebase";
 import bcrypt from "bcryptjs";
 import { notify } from "../lib/notify";

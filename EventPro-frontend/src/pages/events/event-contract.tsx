@@ -5,15 +5,15 @@ import { db } from "../../firebase/firebase";
 import { useParams } from "react-router-dom";
 import { Title } from "react-head";
 import PrimaryButton from "@/components/atoms/primary-button";
-import { useFetchSupplierById } from "../../hooks/useSupplier";
+import { useFetchSupplierById } from "../../hooks/use-supplier";
 import { Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { termsOfCondition } from "../../constants/categories";
-import { useFetchSupplierServices } from "../../hooks/useSupplier";
-import { useFetchEvents } from "../../hooks/useEvents";
+import { useFetchSupplierServices } from "../../hooks/use-supplier";
+import { useFetchEvents } from "../../hooks/use-events";
 import PageLoading from "@/components/atoms/page-loading";
-import { useFetchAllApplication } from "../../hooks/useApplication";
+import { useFetchAllApplication } from "../../hooks/use-application";
 
 export default function EventContract({ userData }: LegacyProps) {
 

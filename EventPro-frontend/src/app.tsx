@@ -3,33 +3,34 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { HeadProvider } from "react-head"
 import Loading from "@/components/atoms/loading"
 import { Toaster } from "@/components/ui/toaster"
-import { Private, Public, RoleOnly } from "@/app/RouteGuards"
-import { useSessionListener } from "@/app/useSessionListener"
-import { useSessionStore } from "@/stores/useSessionStore"
+import { Private, Public, RoleOnly } from "@/app/route-guards"
+import { useSessionListener } from "@/app/use-session-listener"
+import { useSessionStore } from "@/stores/use-session-store"
 
-const HomePage = lazy(() => import("@/pages/HomePage"))
-const Login = lazy(() => import("@/pages/auth/Login"))
-const Register = lazy(() => import("@/pages/auth/Register"))
-const ForgotPassword = lazy(() => import("@/pages/auth/ForgotPassword"))
-const ResetPassword = lazy(() => import("@/pages/auth/ResetPassword"))
-const Dashboard = lazy(() => import("@/pages/Dashboard"))
-const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"))
-const Review = lazy(() => import("@/pages/admin/Review"))
-const Verification = lazy(() => import("@/pages/verify/Verification"))
-const Event = lazy(() => import("@/pages/events/Event"))
-const CreateEvent = lazy(() => import("@/pages/events/CreateEvent"))
+const HomePage = lazy(() => import("@/pages/home-page"))
+const Login = lazy(() => import("@/pages/auth/login"))
+const Register = lazy(() => import("@/pages/auth/register"))
+const ForgotPassword = lazy(() => import("@/pages/auth/forgot-password"))
+const ResetPassword = lazy(() => import("@/pages/auth/reset-password"))
+const Dashboard = lazy(() => import("@/pages/dashboard"))
+const AdminDashboard = lazy(() => import("@/pages/admin/admin-dashboard"))
+const Review = lazy(() => import("@/pages/admin/review"))
+const Verification = lazy(() => import("@/pages/verify/verification"))
+const Event = lazy(() => import("@/pages/events/event"))
+const CreateEvent = lazy(() => import("@/pages/events/create-event"))
 // EditEvent (legacy JS) can render `undefined`, which React allows but ComponentType does not model.
 const EditEvent = lazy(
-  () => import("@/pages/events/EditEvent") as Promise<{ default: ComponentType<{ userData: unknown }> }>,
+  () => import("@/pages/events/edit-event") as Promise<{ default: ComponentType<{ userData: unknown }> }>,
 )
-const EventContract = lazy(() => import("@/pages/events/EventContract"))
-const Profile = lazy(() => import("@/profile/Profile"))
-const Settings = lazy(() => import("@/settings/Settings"))
-const Supplier = lazy(() => import("@/pages/suppliers/Supplier"))
-const SupplierShop = lazy(() => import("@/pages/suppliers/SupplierShop"))
-const Favorites = lazy(() => import("@/pages/favorites/Favorites"))
-const ChatWindow = lazy(() => import("@/pages/chat/ChatWindow"))
-const Notification = lazy(() => import("@/pages/notifications/Notification"))
+const EventContract = lazy(() => import("@/pages/events/event-contract"))
+const Profile = lazy(() => import("@/profile/profile"))
+const Settings = lazy(() => import("@/settings/settings"))
+const Supplier = lazy(() => import("@/pages/suppliers/supplier"))
+const SupplierShop = lazy(() => import("@/pages/suppliers/supplier-shop"))
+const Analytics = lazy(() => import("@/pages/analytics/analytics"))
+const Favorites = lazy(() => import("@/pages/favorites/favorites"))
+const ChatWindow = lazy(() => import("@/pages/chat/chat-window"))
+const Notification = lazy(() => import("@/pages/notifications/notification"))
 const PaymentSuccess = lazy(() => import("@/components/organisms/success-payment"))
 const Error404 = lazy(() => import("@/components/organisms/error-404"))
 
@@ -51,7 +52,7 @@ export default function App() {
       <BrowserRouter>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path="/" element={<Public {...session}><HomePage user={user} /></Public>} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/register" element={<Register user={user} />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<Public {...session}><ResetPassword /></Public>} />
@@ -78,6 +79,10 @@ export default function App() {
             <Route path="/settings" element={<Private {...session}><Settings {...pageProps} /></Private>} />
             <Route path="/suppliers" element={<Private {...session}><Supplier {...pageProps} /></Private>} />
             <Route path="/shop" element={<Private {...session}><SupplierShop {...pageProps} /></Private>} />
+            <Route
+              path="/analytics"
+              element={<Private {...session}><Analytics userData={userData} /></Private>}
+            />
             <Route path="/favorites" element={<Private {...session}><Favorites {...pageProps} /></Private>} />
             <Route path="/chats" element={<Private {...session}><ChatWindow {...pageProps} /></Private>} />
             <Route path="/chats/:id" element={<Private {...session}><ChatWindow {...pageProps} /></Private>} />

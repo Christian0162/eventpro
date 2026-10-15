@@ -4,10 +4,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Search, Send } from 'lucide-react';
 import { getDocs, collection, query, where, orderBy, onSnapshot, addDoc, serverTimestamp, setDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-import { useFetchUsers } from "../../hooks/useUsers";
-import { useFetchUserProfiles } from "../../hooks/useProfile";
-import { useFetchSuppliers } from "../../hooks/useSupplier";
-import { useFetchAllContact } from "../../hooks/useContact";
+import { useFetchUsers } from "../../hooks/use-users";
+import { useFetchUserProfiles } from "../../hooks/use-profile";
+import { useFetchSuppliers } from "../../hooks/use-supplier";
+import { useFetchAllContact } from "../../hooks/use-contact";
 import PageLoading from "@/components/atoms/page-loading";
 import { Title } from "react-head";
 
