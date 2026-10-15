@@ -57,7 +57,7 @@ export default function App() {
             <Route path="/reset-password" element={<Public {...session}><ResetPassword /></Public>} />
             <Route
               path="/login"
-              element={user ? <Navigate to="/dashboard" replace /> : <Public {...session}><Login user={user} /></Public>}
+              element={user ? <Navigate to="/dashboard" replace /> : <Login user={user} />}
             />
 
             <Route path="/dashboard" element={<Private {...session}><Dashboard {...pageProps} /></Private>} />

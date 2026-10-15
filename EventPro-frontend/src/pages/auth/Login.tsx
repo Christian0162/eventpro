@@ -5,11 +5,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { auth } from "@/firebase/firebase"
 import { useAuthLogin } from "@/hooks/useAuth"
 import { loginSchema, type LoginValues } from "@/lib/validations/auth"
-import { AuthCard } from "@/features/auth/AuthCard"
+import { AuthSplit } from "@/features/auth/AuthSplit"
 import { PasswordInput } from "@/components/molecules/password-input"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+
+const labelClass = "text-xs font-medium uppercase tracking-wider text-muted-foreground"
+const fieldClass = "h-11 rounded-full px-4"
 
 export default function Login({ user }: { user: unknown }) {
   const { login, error: loginError, isLoading } = useAuthLogin()
@@ -21,8 +24,8 @@ export default function Login({ user }: { user: unknown }) {
   if (user) return <Navigate to="/dashboard" />
 
   return (
-    <AuthCard
-      title="Welcome back"
+    <AuthSplit
+      title="Welcome back!"
       description="Log in to manage your events and bookings."
       footer={
         <>
@@ -35,15 +38,15 @@ export default function Login({ user }: { user: unknown }) {
     >
       <Title>Login | EventPro</Title>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit((v) => login(auth, v.email, v.password))} className="space-y-4" noValidate>
+        <form onSubmit={form.handleSubmit((v) => login(auth, v.email, v.password))} className="space-y-5" noValidate>
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className={labelClass}>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" autoComplete="email" placeholder="you@example.com" {...field} />
+                  <Input type="email" autoComplete="email" placeholder="you@example.com" className={fieldClass} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -54,9 +57,9 @@ export default function Login({ user }: { user: unknown }) {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel className={labelClass}>Password</FormLabel>
                 <FormControl>
-                  <PasswordInput autoComplete="current-password" {...field} />
+                  <PasswordInput autoComplete="current-password" className={fieldClass} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -72,11 +75,11 @@ export default function Login({ user }: { user: unknown }) {
               Forgot password?
             </Link>
           </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button type="submit" size="lg" className="h-11 w-full rounded-full" disabled={isLoading}>
             {isLoading ? "Logging in…" : "Login"}
           </Button>
         </form>
       </Form>
-    </AuthCard>
+    </AuthSplit>
   )
 }
