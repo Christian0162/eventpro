@@ -1,6 +1,6 @@
 import { Calendar, Package, type LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
-import type { RegisterValues } from "@/lib/validations/auth"
+import type { RegisterValues } from "@/types/auth"
 
 const OPTIONS: { name: RegisterValues["role"]; description: string; icon: LucideIcon }[] = [
   { name: "Event Planner", description: "Create events, find suppliers and coordinate the details.", icon: Calendar },

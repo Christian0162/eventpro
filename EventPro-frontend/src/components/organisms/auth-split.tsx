@@ -33,10 +33,8 @@ export function AuthSplit({ title, description, children, footer }: Props) {
         aria-hidden="true"
         className="relative hidden overflow-hidden lg:order-1 bg-primary text-primary-foreground lg:flex lg:flex-col lg:items-center lg:justify-center"
       >
-        <div className="absolute -top-24 -right-24 size-80 rounded-full bg-white/10" />
-        <div className="absolute -bottom-32 -left-20 size-96 rounded-full bg-white/10" />
-        <div className="absolute top-1/4 left-12 size-3 rounded-full bg-white/40" />
-        <div className="absolute right-20 bottom-1/3 size-4 rounded-full bg-white/30" />
+        <img src="/landing/c3.jpg" alt="" className="absolute inset-0 size-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/40" />
 
         <div className="relative flex h-80 w-full max-w-md items-center justify-center">
           <div className="absolute top-2 left-4 flex size-14 items-center justify-center rounded-full bg-white shadow-lg">

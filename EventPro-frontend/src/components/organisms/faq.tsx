@@ -9,12 +9,15 @@ const FAQS = [
 
 export function Faq() {
   return (
-    <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <h2 className="text-3xl font-bold">Questions people ask</h2>
+    <section id="faq" className="mx-auto max-w-3xl scroll-mt-20 px-4 pb-20 sm:px-6">
+      <div className="flex items-center gap-6">
+        <h2 className="text-2xl font-extrabold uppercase">Questions people ask</h2>
+        <span className="h-px flex-1 bg-border" />
+      </div>
       <Accordion type="single" collapsible className="mt-6">
         {FAQS.map((f) => (
           <AccordionItem key={f.q} value={f.q}>
-            <AccordionTrigger className="text-left text-base">{f.q}</AccordionTrigger>
+            <AccordionTrigger className="text-base">{f.q}</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
           </AccordionItem>
         ))}
