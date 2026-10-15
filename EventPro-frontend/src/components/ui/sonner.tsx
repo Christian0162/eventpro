@@ -1,12 +1,9 @@
 import { Toaster as Sonner, type ToasterProps } from "sonner"
-import { resolveTheme, useUIStore } from "@/stores/useUIStore"
 
 const Toaster = (props: ToasterProps) => {
-  const theme = useUIStore((s) => s.theme)
-
   return (
     <Sonner
-      theme={resolveTheme(theme)}
+      theme="light"
       className="toaster group"
       style={
         {

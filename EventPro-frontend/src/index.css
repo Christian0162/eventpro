@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
  * EventPro design tokens: blue and white.
  * Primary is Tailwind blue-600 (the app's original brand blue). Secondary and
@@ -30,28 +28,6 @@
   --input: oklch(0.88 0.015 255);
   --ring: oklch(0.623 0.214 259.8);
   --success: oklch(0.55 0.13 155);
-}
-
-.dark {
-  --background: oklch(0.19 0.03 265);
-  --foreground: oklch(0.97 0.005 255);
-  --card: oklch(0.23 0.035 265);
-  --card-foreground: oklch(0.97 0.005 255);
-  --popover: oklch(0.23 0.035 265);
-  --popover-foreground: oklch(0.97 0.005 255);
-  --primary: oklch(0.623 0.214 259.8);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.29 0.045 265);
-  --secondary-foreground: oklch(0.97 0.005 255);
-  --muted: oklch(0.29 0.03 265);
-  --muted-foreground: oklch(0.72 0.03 260);
-  --accent: oklch(0.32 0.07 265);
-  --accent-foreground: oklch(0.93 0.03 255);
-  --destructive: oklch(0.65 0.2 25);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.65 0.18 260);
-  --success: oklch(0.7 0.14 155);
 }
 
 @theme inline {

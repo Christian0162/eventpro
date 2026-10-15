@@ -5,7 +5,6 @@ import Loading from "@/components/atoms/loading"
 import { Toaster } from "@/components/ui/sonner"
 import { Private, Public, RoleOnly } from "@/app/RouteGuards"
 import { useSessionListener } from "@/app/useSessionListener"
-import { useThemeEffect } from "@/app/useThemeEffect"
 import { useSessionStore } from "@/stores/useSessionStore"
 
 const HomePage = lazy(() => import("@/pages/HomePage"))
@@ -36,7 +35,6 @@ const Error404 = lazy(() => import("@/components/organisms/error-404"))
 
 export default function App() {
   useSessionListener()
-  useThemeEffect()
 
   const status = useSessionStore((s) => s.status)
   const user = useSessionStore((s) => s.user)
