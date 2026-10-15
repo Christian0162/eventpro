@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource-variable/figtree";
+@import "@fontsource-variable/bricolage-grotesque";
 
 /*
  * EventPro design tokens: blue and white.
@@ -28,11 +30,16 @@
   --input: oklch(0.88 0.015 255);
   --ring: oklch(0.623 0.214 259.8);
   --success: oklch(0.55 0.13 155);
+  --chart-1: oklch(0.546 0.245 262.9);
+  --chart-2: oklch(0.55 0.13 155);
+  --chart-3: oklch(0.72 0.17 70);
+  --chart-4: oklch(0.6 0.2 300);
+  --chart-5: oklch(0.65 0.2 20);
 }
 
 @theme inline {
-  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Bricolage Grotesque", "Figtree", ui-sans-serif, sans-serif;
+  --font-sans: "Figtree Variable", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", "Figtree Variable", ui-sans-serif, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -56,6 +63,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-success: var(--success);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 }
 
 @layer base {
@@ -92,4 +104,28 @@ input::-ms-clear {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Landing page keyframes */
+@keyframes landing-marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes landing-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Thin scrollbars inside dialogs */
+[data-slot="dialog-content"] {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.8 0.02 255) transparent;
+}
+[data-slot="dialog-content"]::-webkit-scrollbar {
+  width: 6px;
+}
+[data-slot="dialog-content"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+[data-slot="dialog-content"]::-webkit-scrollbar-thumb {
+  background: oklch(0.8 0.02 255);
+  border-radius: 9999px;
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
-import logoUrl from "@/assets/eventpro-logo.svg"
+import logoUrl from "@/assets/eventpro-logo.png"
 
 export function Logo({ to = "/", className }: { to?: string; className?: string }) {
   return (
