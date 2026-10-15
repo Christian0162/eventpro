@@ -1,7 +1,7 @@
 import type { Doc, LegacyProps } from "@/types/firestore";
 import { useMemo } from "react"
 import { Title } from "react-head";
-import { Users, IdCard, Calendar, BarChart3, ChartNoAxesCombined, TrendingUp, AlertTriangle, ReceiptText, PhilippinePeso, Package, BanknoteArrowUp, ShieldAlert } from "lucide-react";
+import { Users, IdCard, Calendar, BarChart3, ChartNoAxesCombined, TrendingUp, ReceiptText, PhilippinePeso, Package, BanknoteArrowUp, ShieldAlert } from "lucide-react";
 import { Tab, TabList, TabPanels, TabGroup, TabPanel } from "@headlessui/react";
 import { PieChart, BarChart, LineChart } from "@/components/molecules/charts";
 import PageLoading from "@/components/atoms/page-loading";

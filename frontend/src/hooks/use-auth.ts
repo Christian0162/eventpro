@@ -2,7 +2,6 @@ import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } f
 import { setDoc, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useFetchUsers } from "./use-users";
 import { useFetchEvents } from "./use-events";
-import { useFetchSuppliers } from "./use-supplier";
 import { db } from "../firebase/firebase";
 import bcrypt from "bcryptjs";
 import { notify } from "../lib/notify";
@@ -13,7 +12,6 @@ export const useAuthLogin = () => {
     const [error, setError] = useState('')
     const { users } = useFetchUsers()
     const { events } = useFetchEvents()
-    const { suppliers } = useFetchSuppliers()
 
     const login = async (auth, email, password) => {
         try {

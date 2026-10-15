@@ -22,7 +22,7 @@ export default function UserNotification({ userData }: LegacyProps) {
     const [modalOpen, setModalOpen] = useState(false)
     const [selectedNotif, setSelectedNotif] = useState(null)
     const { notifications } = useFetchNotificationsById(userData?.id)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading] = useState(false)
     const [isReading, setIsReading] = useState(false)
     const { events } = useFetchEvents()
     const { contracts } = useFetchContract()

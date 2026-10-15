@@ -3,7 +3,7 @@ import type { Doc } from "@/types/firestore";
 import { useState, useEffect, useMemo } from "react"
 import AddressAutoComplete from "@/components/molecules/address-auto-complete";
 import Select from "react-select"
-import { X, Calendar, MapPin, Tag, Users, FileText, Send, Check, CircleCheck } from "lucide-react";
+import { X, Calendar, MapPin, Tag, Users, FileText, Send, CircleCheck } from "lucide-react";
 import PrimaryButton from "@/components/atoms/primary-button";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
@@ -47,8 +47,8 @@ export default function EditEvent({ userData }: LegacyProps) {
     const [tags, setTags] = useState([])
     const [applications, setApplications] = useState([])
     const [eventData, setEventData] = useState<Doc>([] as unknown as Doc)
-    const [coords, setCoords] = useState([])
-    const { contracts, isLoading: isContractsLoading } = useFetchContract()
+    const [, setCoords] = useState([])
+    const { contracts } = useFetchContract()
     const { reviews, isLoading: isReviewsLoading } = useFetchReviews()
     const { services, isLoading: isServiceLoading } = useFetchSupplierServices()
     const { suppliers, isLoading: isSupplierLoading } = useFetchSuppliers()

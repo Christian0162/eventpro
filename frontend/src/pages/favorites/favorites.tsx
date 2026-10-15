@@ -1,7 +1,7 @@
 import type { LegacyProps } from "@/types/firestore";
 import { Title } from "react-head";
 import Cards from "@/components/atoms/cards";
-import { MapPin, Clock, Star, DollarSign, MessageCircleMore, Heart, Trash, CalendarDays, CircleDollarSign, Users, CircleAlert, CircleCheck } from "lucide-react";
+import { MapPin, Clock, Star, MessageCircleMore, Heart, Trash, CalendarDays, CircleDollarSign, Users, CircleAlert, CircleCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetchFavorites } from "../../hooks/use-favorites";
@@ -429,7 +429,6 @@ export default function Favorites({ userData }: LegacyProps) {
                                         const eventEndTime = events?.event_time?.valueStartAndEnd[1] || "00:00"
                                         const [eventHour, eventMinute] = eventEndTime.split(":").map(Number)
 
-                                        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes());
                                         const eventDay = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
                                         eventDay.setHours(eventHour, eventMinute, 0, 0)
 

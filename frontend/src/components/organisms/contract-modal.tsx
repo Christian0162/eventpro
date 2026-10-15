@@ -1,10 +1,9 @@
 import type { LegacyProps } from "@/types/firestore";
 import type { Doc } from "@/types/firestore";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
-import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { useEffect, useState, useRef } from 'react'
 import { X, Check, ArrowLeftRight } from 'lucide-react'
-import { FileText, MapPin, Clock, Wallet, ChevronDown, Calendar, Building, User, TriangleAlert, CreditCard, PhilippinePeso, Package } from 'lucide-react'
+import { FileText, MapPin, Calendar, Building, User, TriangleAlert, CreditCard, PhilippinePeso, Package } from 'lucide-react'
 import { collection, doc, getDocs, query, where, addDoc, serverTimestamp, updateDoc, increment } from 'firebase/firestore'
 import { db, auth } from '@/firebase/firebase'
 import { paymentMethods, statusStyles } from '@/constants/categories'
@@ -41,7 +40,7 @@ export default function ContractModal({ isOpen, onClose, userData, event_id, sup
     const paymentSectionRef = useRef(null);
     const { reports } = useFetchAllReports()
     const navigate = useNavigate()
-    const [now, setNow] = useState(new Date())
+    const [, setNow] = useState(new Date())
 
     const contract = AllContracts.find(contract => contract?.event_id === eventData?.id && contract?.supplier_id === supplierData?.id)
 
@@ -129,7 +128,6 @@ export default function ContractModal({ isOpen, onClose, userData, event_id, sup
     const eventEndTime = eventData?.event_time?.valueStartAndEnd[1] || "00:00"
     const [eventHour, eventMinute] = eventEndTime.split(":").map(Number)
 
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes());
     const eventDay = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
     eventDay.setHours(eventHour, eventMinute, 0, 0)
 

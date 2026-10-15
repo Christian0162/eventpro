@@ -23,7 +23,8 @@ export default function AvailabilityPicker({ onChange, existingValue = "", setTi
     const parseTo24Hr = (timeStr) => {
         if (!timeStr) return "";
         const [time, modifier] = timeStr.split(" ");
-        let [hours, minutes] = time.split(":").map(Number);
+        const [parsedHours, minutes] = time.split(":").map(Number);
+        let hours = parsedHours;
 
         if (modifier === "PM" && hours !== 12) hours += 12;
         if (modifier === "AM" && hours === 12) hours = 0;

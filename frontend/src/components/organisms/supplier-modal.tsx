@@ -9,7 +9,6 @@ import { doc, addDoc, where, serverTimestamp, onSnapshot, collection, deleteDoc,
 import { useNavigate } from 'react-router-dom'
 import { Star, Clock7, CircleCheck, Edit3 } from "lucide-react"
 import { ServiceEdit } from '@/components/organisms/update-modal'
-import ShopCards from '@/components/atoms/shop-cards'
 import { formatDistanceToNow } from 'date-fns'
 import { responseTimeOptions } from '@/constants/categories'
 import ServiceModal from '@/components/organisms/service-modal'
@@ -25,7 +24,7 @@ import ProfileHover from '@/components/molecules/profile-hover'
 import AvailabilityPicker from '@/components/molecules/availability-picker'
 import EventBookingModal from '@/components/organisms/event-booking-modal'
 
-export default function SupplierModal({ isOpen, onClose, supplierData, applications, userData, reviews, services, averageRating, className }: LegacyProps) {
+export default function SupplierModal({ isOpen, onClose, supplierData, applications, userData, reviews, services, averageRating }: LegacyProps) {
 
     const navigate = useNavigate()
 

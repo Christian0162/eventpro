@@ -4,7 +4,7 @@ import 'filepond/dist/filepond.min.css';
 import { FilePond } from 'react-filepond';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
-export default function UploadWidget({ type, setPicture, setId, setDoc, className, setError }: LegacyProps) {
+export default function UploadWidget({ type, setPicture, setId, setDoc, className }: LegacyProps) {
 
     const [files, setFiles] = useState([])
 

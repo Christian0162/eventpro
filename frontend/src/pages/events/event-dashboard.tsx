@@ -24,7 +24,7 @@ export default function EventDashboard({ userData }: LegacyProps) {
     const ContractModal = useMemo(() => lazy(() => import("@/components/organisms/contract-modal")), []);
     const [isContractModalOpen, setIsContractModalOpen] = useState(false);
     const [selectedContract, setSelectedContract] = useState(null)
-    const { contracts, isLoading: isContractsLoading } = useFetchContract()
+    const { contracts } = useFetchContract()
     const { events, isLoading: isEventLoading } = useFetchEventsById(userData?.id)
     const { suppliers, isLoading: isSuppliersLoading } = useFetchSuppliers()
     const { transactions, isLoading: isTransactionsLoading } = useFetchTransactionById(userData?.id)

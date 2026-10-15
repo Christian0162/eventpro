@@ -10,7 +10,7 @@ import { termsOfCondition } from "@/constants/categories";
 import UploadWidget from "@/components/molecules/upload-widget";
 import { useFetchUsers } from "@/hooks/use-users";
 
-export default function ReportModal({ contractData, userData, eventData, supplierData }: LegacyProps) {
+export default function ReportModal({ contractData, userData, eventData }: LegacyProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [penalties, setPenalties] = useState({

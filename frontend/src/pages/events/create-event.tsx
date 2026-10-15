@@ -24,7 +24,7 @@ export default function CreateEvent({ userData }: LegacyProps) {
     const [event_time, setEvent_time] = useState<{ previewStartAndEnd: string; valueStartAndEnd: string[] } | never[]>([])
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
-    const [coords, setCoords] = useState([])
+    const [, setCoords] = useState([])
     const { addEvent, isLoading } = useAddEvent()
 
     useEffect(() => {

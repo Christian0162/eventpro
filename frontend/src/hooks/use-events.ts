@@ -67,7 +67,7 @@ export const useAddEvent = () => {
     const addEvent = async (id, data) => {
         setIsLoading(true);
         try {
-            const event = await addDoc(collection(db, "events"), {
+            await addDoc(collection(db, "events"), {
                 user_id: id,
                 event_name: data.event_name,
                 event_location: data.event_location,

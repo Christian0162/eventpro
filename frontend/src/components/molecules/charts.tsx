@@ -82,7 +82,7 @@ interface BarDataset {
 interface BarChartProps {
     className?: string
     labels?: string[]
-    datasets?: Record<string, any>[]
+    datasets?: Record<string, unknown>[]
     xLabel?: string
     yLabel?: string
     title?: string

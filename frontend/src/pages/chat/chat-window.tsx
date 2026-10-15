@@ -166,7 +166,7 @@ export default function ChatWindow({ userData }: LegacyProps) {
         const snapshot = await getDocs(q);
 
         if (snapshot.empty) {
-            const contact = await setDoc(doc(contactsRef), {
+            await setDoc(doc(contactsRef), {
                 user_id: selectedContact.contact_id,
                 contact_id: userData.id,
                 name: userData?.role === "Event Planner" ? userData.first_name : shop.supplier_name,

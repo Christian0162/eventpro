@@ -2,7 +2,7 @@ import type { Doc, LegacyProps } from "@/types/firestore";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { useEffect, useState } from 'react'
-import { X, Star, ThumbsUp, MessageSquare } from 'lucide-react'
+import { X, Star, ThumbsUp } from 'lucide-react'
 import { addDoc, updateDoc, collection, serverTimestamp, doc, query, where, deleteDoc, getDocs, arrayUnion, increment } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from '@/firebase/firebase'
@@ -655,7 +655,7 @@ export const ReportReview = ({ report, userData, response, eventData }: LegacyPr
 
 
                     if (data && report.reporter_role === "Event Planner") {
-                        await createRefund(data, report.contract_id)
+                        await createRefund(data)
                     }
 
                     await addDoc(collection(db, "notifications"), {

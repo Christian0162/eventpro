@@ -1,11 +1,10 @@
 import type { LegacyProps } from "@/types/firestore";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { PlainButton as Button } from "@/components/atoms/plain-button"
-import { X, Eye, EyeOff, TriangleAlert, AlertTriangle, User } from 'lucide-react'
+import { X, Eye, EyeOff, TriangleAlert, AlertTriangle } from 'lucide-react'
 import { useState } from 'react'
 import { EmailAuthProvider, reauthenticateWithCredential, signOut } from 'firebase/auth'
 import { useFetchEvents } from '@/hooks/use-events'
-import { useFetchSuppliers } from '@/hooks/use-supplier'
 import { arrayUnion, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { db, auth } from '@/firebase/firebase'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
@@ -15,11 +14,9 @@ export default function DeactivateModal({ user, userData }: LegacyProps) {
 
     const [isOpen, setIsOpen] = useState(false)
     const { events } = useFetchEvents()
-    const { suppliers } = useFetchSuppliers()
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const userEvents = events.filter(events => events.user_id === userData.id)
-    const userShops = suppliers.filter(shops => shops.id === userData.id)
 
     function open() {
         setIsOpen(true)
@@ -154,7 +151,7 @@ export default function DeactivateModal({ user, userData }: LegacyProps) {
                     }
                 });
 
-            }).catch((e) => {
+            }).catch(() => {
                 // console.error(e.code)
                 setErrors(error => ({ ...error, password: "Password is incorrect" }))
             }).finally(() => {
@@ -167,15 +164,6 @@ export default function DeactivateModal({ user, userData }: LegacyProps) {
             // resetForm();
         }
 
-    };
-
-    const resetForm = () => {
-        setPassword('');
-        setReason('');
-        setCustomReason('');
-        setConfirmDeactivate(false);
-        setShowPassword(false);
-        setErrors({});
     };
 
 

@@ -14,7 +14,7 @@ export default function AIModal({ ai_response, ai_shops, trigger }: LegacyProps)
     const [isOpen, setIsOpen] = useState(false)
     const [prompt, setPrompt] = useState('')
     const [budget, setBudget] = useState('') // New budget input
-    const [recommendations, setRecommendations] = useState('')
+    const [, setRecommendations] = useState('')
     const [error, setError] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const { reviews } = useFetchReviews()

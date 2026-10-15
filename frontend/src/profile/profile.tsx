@@ -1,6 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
-import { doc, onSnapshot, updateDoc } from 'firebase/firestore';
-import { Star, BadgeCheck, Badge } from 'lucide-react';
+import { doc, updateDoc } from 'firebase/firestore';
+import { Star, BadgeCheck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase/firebase';
 import { useFetchUserProfileById, useFetchUserProfiles } from '../hooks/use-profile';
@@ -15,9 +15,7 @@ export default function Profile({ userData }: LegacyProps) {
 
     const [descriptionEditing, setDescriptionEditing] = useState(false)
     const [descriptionLoading, setDescriptionLoading] = useState(false)
-    const [error, setError] = useState("");
-    const [contactInformationEditing, setContactInformationEditing] = useState(false)
-    const [contactInformationLoading, setContactInformationLoading] = useState(false)
+    const [contactInformationEditing] = useState(false)
     const [contact_number, setContact_number] = useState('')
     const [description, setDescription] = useState('')
     const { userProfile } = useFetchUserProfileById(userData?.id)

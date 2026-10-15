@@ -313,7 +313,7 @@ export default function Event({ userData }: LegacyProps) {
                                 const eventDay = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
                                 eventDay.setHours(eventHour, eventMinute, 0, 0)
 
-                                const isAllContractPaid = eventContracts.some((cont, index) => {
+                                const isAllContractPaid = eventContracts.some((cont) => {
                                     const contractTransaction = transactions?.filter(t => t.contract_id === cont.id && t.status === "HOLD")
                                     const eventTransactions = contractTransaction?.reduce((sum, trans) => sum + (trans.amount - trans.process_fee), 0)
 

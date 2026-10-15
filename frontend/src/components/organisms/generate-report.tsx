@@ -4,7 +4,7 @@ import autoTable from "jspdf-autotable";
 
 export default function GenerateReport({
     title = "Performance Report",
-    userData = {} as Record<string, any>,
+    userData = {} as Record<string, unknown>,
     fields = [],
     sections = [],
     filename = "Report",
@@ -65,7 +65,7 @@ export default function GenerateReport({
             }
 
             /* ----------------------------- SECTIONS / TABLES ----------------------------- */
-            let nextY = doc.lastAutoTable?.finalY || cursorY + 10;
+            const nextY = doc.lastAutoTable?.finalY || cursorY + 10;
 
             sections.forEach((section, index) => {
                 const startY = index === 0 ? nextY + 12 : doc.lastAutoTable.finalY + 12;

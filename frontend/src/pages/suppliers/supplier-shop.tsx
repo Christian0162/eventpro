@@ -1,6 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
 import type { Doc } from "@/types/firestore";
-import { MapPin, CircleCheckBig, Star, Edit3, X } from "lucide-react"
+import { MapPin, CircleCheckBig, Star } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
 import { ShopBackgroundModal } from "@/components/organisms/shop-background-modal"

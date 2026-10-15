@@ -6,7 +6,7 @@ import AddressAutocomplete from "@/components/molecules/address-auto-complete";
 import { FileText, IdCard } from "lucide-react";
 import VerificationCheckbox from "@/components/molecules/verification-check-box";
 import { auth, db } from "../../firebase/firebase";
-import { setDoc, doc, getDoc, updateDoc, query, where, serverTimestamp, addDoc, collection } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc, serverTimestamp, addDoc, collection } from "firebase/firestore";
 import UploadWidget from "@/components/molecules/upload-widget";
 import { SupplierOptions, idOptions, documentOptions, exampleIds, exampleDocuments } from "../../constants/categories";
 import Swal from "sweetalert2";
@@ -26,7 +26,7 @@ export default function Verification({ userData }: LegacyProps) {
     const [business_name, setBusiness_name] = useState('')
     const [contact_number, setContact_number] = useState('')
     const [additional_information, setAdditional_information] = useState('')
-    const [coords, setCoords] = useState([])
+    const [, setCoords] = useState([])
     const [first_name, setFirst_Name] = useState('')
     const [last_name, setLast_Name] = useState('')
     const [email_address, setEmail_Address] = useState('')
@@ -149,7 +149,7 @@ export default function Verification({ userData }: LegacyProps) {
             })
 
             if (userData.role === 'Supplier') {
-                const verification = await setDoc(doc(db, "verification", auth.currentUser.uid), {
+                await setDoc(doc(db, "verification", auth.currentUser.uid), {
                     supplier_name: business_name,
                     supplier_number: contact_number,
                     supplier_location: location,

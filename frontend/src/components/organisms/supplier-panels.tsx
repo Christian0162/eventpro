@@ -2,7 +2,7 @@ import type { LegacyProps } from "@/types/firestore";
 import { useEffect, useState } from 'react'
 import ShopCards from '@/components/atoms/shop-cards'
 import { TabList, Tab, TabPanel, TabPanels, TabGroup } from '@headlessui/react'
-import { Edit3, Mail, Phone, DollarSign, Clock7, CircleCheck, Star, Check, Trash2 } from 'lucide-react'
+import { Edit3, Mail, Phone, Clock7, CircleCheck, Star, Check, Trash2 } from 'lucide-react'
 import { AboutOurBusiessEdit } from '@/components/organisms/update-modal'
 import Select from 'react-select'
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore'

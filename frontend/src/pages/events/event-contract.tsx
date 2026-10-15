@@ -1,6 +1,6 @@
 import type { Doc, LegacyProps } from "@/types/firestore";
 import { useEffect, useState } from "react";
-import { addDoc, collection, doc, getDocs, query, serverTimestamp, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { useParams } from "react-router-dom";
 import { Title } from "react-head";

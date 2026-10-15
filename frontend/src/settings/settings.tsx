@@ -1,7 +1,7 @@
 import type { LegacyProps } from "@/types/firestore";
 import type { Doc } from "@/types/firestore";
 import { useEffect, useRef, useState } from 'react';
-import { Check, User, Pencil, Shield, Wallet, Lock, PhilippinePeso, UserRound } from 'lucide-react';
+import { Check, Shield, Wallet, Lock, PhilippinePeso } from 'lucide-react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';

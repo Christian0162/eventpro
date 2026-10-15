@@ -2,13 +2,11 @@ import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../firebase/firebase";
 import Swal from "sweetalert2";
-import { useFetchAllTransaction } from "./use-transaction";
 
 export const useCreateRefund = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const { transactions } = useFetchAllTransaction()
 
-    const createRefund = async (transaction, contract_id) => {
+    const createRefund = async (transaction) => {
         setIsLoading(true);
         try {
             const response = await fetch("https://eventpro-backend-python.onrender.com/api/v1/refund", {

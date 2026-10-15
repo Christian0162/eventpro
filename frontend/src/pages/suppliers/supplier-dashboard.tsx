@@ -32,11 +32,11 @@ export default function SupplierDashboard({ userData }: LegacyProps) {
     const { reviews: reviewed } = useFetchReviews()
     const { contracts } = useFetchContract()
     const { events, isLoading: isEventLoading } = useFetchEvents()
-    const { services, isLoading: isServicesLoading } = useFetchSupplierServices()
+    const { services } = useFetchSupplierServices()
     const { supplier, isLoading: isSupplierLoading } = useFetchSupplierById(userData.id)
     const { suppliers, isLoading: isSuppliersLoading } = useFetchSuppliers()
     const { users } = useFetchUsers()
-    const [now, setNow] = useState(new Date())
+    const [now] = useState(new Date())
     const { userProfiles } = useFetchUserProfiles()
     const { deliveries, isLoading: isDeliveriesLoading } = useFetchDeliveries()
     const { transactions, isLoading: isTransactionLoading } = useFetchTransactionById(userData.id)
@@ -156,10 +156,6 @@ export default function SupplierDashboard({ userData }: LegacyProps) {
         events.filter(event => activeContracts.some(cont => event.id === cont.event_id)),
         [events, activeContracts])
 
-    const completeContracts = useMemo(() =>
-        contracts.filter(contract => contract?.status === "Completed" && contract.supplier_id === userData.id),
-        [contracts, userData.id]);
-
     const contractHistory = useMemo(() => contracts.filter(contract => (contract?.status === "Completed" || contract?.status === "Cancelled") && contract.supplier_id === userData.id), [contracts, userData.id])
 
     console.log(contractHistory)
@@ -175,12 +171,6 @@ export default function SupplierDashboard({ userData }: LegacyProps) {
             events.find(event => event.id === contract.event_id)
         ).filter(Boolean),
         [activeContracts, events]);
-
-    const contractEventsforComplete = useMemo(() =>
-        completeContracts.map(contract =>
-            events.find(event => event.id === contract.event_id)
-        ).filter(Boolean),
-        [completeContracts, events]);
 
     const monthlyRatings = Array(12).fill(null).map((_, i) => {
         const monthlyReviews = reviews?.filter(rev => {

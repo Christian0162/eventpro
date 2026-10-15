@@ -1,4 +1,4 @@
-import { MapPin, Mail, Phone, Clock, PhilippinePeso, Calendar } from 'lucide-react';
+import { MapPin, Mail, Phone, Clock } from 'lucide-react';
 import Select from 'react-select';
 import AddressAutocomplete from '@/components/molecules/address-auto-complete';
 import { useState, useEffect } from 'react';
@@ -15,7 +15,7 @@ export default function SupplierRegistration() {
 
     const [supplier_type, setSupplier_type] = useState(null)
     const [expertise, setExpertise] = useState([]);
-    const [coords, setCoords] = useState([])
+    const [, setCoords] = useState([])
     const [supplier_name, setSupplier_name] = useState('')
     const [location, setLocation] = useState('')
     const [supplier_description, setSupplier_description] = useState('')

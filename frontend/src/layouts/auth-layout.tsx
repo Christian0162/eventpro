@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react"
 import { useNavigate } from "react-router-dom"
 import { signOut, type User } from "firebase/auth"
-import { ChevronLeft, Menu, Plus, Search } from "lucide-react"
+import { ChevronLeft, Menu, Search } from "lucide-react"
 import { auth } from "@/firebase/firebase"
 import AppSidebar from "@/components/organisms/app-sidebar"
 import Loading from "@/components/atoms/loading"
@@ -65,7 +65,6 @@ export default function AuthLayout({ children, user, userData }: Props) {
 
   if (!userData || !user) return <Loading />
 
-  const isPlanner = userData.role === "Event Planner"
   const isAdmin = userData.role === "Admin"
 
   const onSearch = (e: FormEvent) => {

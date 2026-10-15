@@ -1,7 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
-import { PlainButton as Button } from "@/components/atoms/plain-button"
-import { MapPin, X, Eye, CalendarDays, CircleDollarSign, Mail, User, Bold, Phone, CircleAlert } from 'lucide-react';
+import { MapPin, X, CalendarDays, CircleDollarSign, Mail, User, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { useFetchUserProfiles } from '@/hooks/use-profile';
 import { useFetchReviews } from '@/hooks/use-reviews';
@@ -13,7 +12,7 @@ import { useFetchContract } from '@/hooks/use-contract';
 import { useFetchAllTransaction } from '@/hooks/use-transaction';
 import PageLoading from '@/components/atoms/page-loading';
 
-export default function EventModal({ isOpen, onClose, eventData, event_purpose, userData }: LegacyProps) {
+export default function EventModal({ isOpen, onClose, eventData, userData }: LegacyProps) {
     const [hoveredReviewerId, setHoveredReviewerId] = useState(null)
     const { userProfiles, isLoading: isProfileLoading } = useFetchUserProfiles()
     const { reviews, isLoading: isReviewLoading } = useFetchReviews()

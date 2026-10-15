@@ -1,6 +1,5 @@
 import type { LegacyProps } from "@/types/firestore";
 import NavBar from "@/components/organisms/nav-bar"
-import { Link } from "react-router-dom"
 
 export default function Error404({ user, userData }: LegacyProps) {
     return (

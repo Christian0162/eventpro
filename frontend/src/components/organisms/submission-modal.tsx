@@ -10,7 +10,6 @@ import { db } from '@/firebase/firebase'
 import Swal from 'sweetalert2'
 import AddressAutocomplete from '@/components/molecules/address-auto-complete'
 import { serviceType } from '@/constants/categories'
-import { useFetchUserProfiles } from '@/hooks/use-profile'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
 
 export default function SubmissionModal({ contract, supplierData, eventData }: LegacyProps) {
@@ -35,10 +34,8 @@ export default function SubmissionModal({ contract, supplierData, eventData }: L
     const [isDeliverBookingLoading, setIsDeliveryBookingLoading] = useState(false)
     const [isQuotationLoading, setIsQuotationLoading] = useState(false)
     const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined)
-    const { userProfiles } = useFetchUserProfiles()
     const [phoneError, setPhoneError] = useState("");
 
-    const eventUser = userProfiles?.find(u => u.id === eventData.user_id)
 
     const deliveryOptions = [
         { value: "lalamove", label: "Lalamove" },

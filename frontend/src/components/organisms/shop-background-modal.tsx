@@ -2,7 +2,7 @@ import type { LegacyProps } from "@/types/firestore";
 import { useState } from "react"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { PlainButton as Button } from "@/components/atoms/plain-button"
-import { X, Star, ThumbsUp, MessageSquare, Edit3 } from 'lucide-react'
+import { X, Edit3 } from 'lucide-react'
 import UploadWidget from "@/components/molecules/upload-widget"
 import LoadingOverlay from "@/components/atoms/loading-overlay"
 import { doc, updateDoc } from "firebase/firestore"

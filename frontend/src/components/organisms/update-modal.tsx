@@ -16,7 +16,7 @@ import LoadingOverlay from '@/components/atoms/loading-overlay'
 
 export const AboutOurBusiessEdit = ({ supplierData }: LegacyProps) => {
     const [isOpen, setIsOpen] = useState(false)
-    const [error, setError] = useState('')
+    const [error] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [expertise, setExpertise] = useState([])
     const [supplier_description, setSupplier_description] = useState('')
@@ -180,12 +180,11 @@ export const AboutOurBusiessEdit = ({ supplierData }: LegacyProps) => {
 
 export const SupplierDetails = ({ supplierData }: LegacyProps) => {
     const [isOpen, setIsOpen] = useState(false)
-    const [error, setError] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [supplier_type, setSupplier_type] = useState(null)
     const [store_name, setStore_name] = useState('')
     const [supplier_location, setSupplier_location] = useState('')
-    const [coords, setCoords] = useState([])
+    const [, setCoords] = useState([])
 
     useEffect(() => {
         setSupplier_location(supplierData?.supplier_location)
@@ -381,7 +380,6 @@ export const ServiceEdit = ({ supplierData, service_id, services }: LegacyProps)
             const newErrors: Record<string, string> = {};
 
             // Find the service being edited
-            const currentService = service.find(s => s.id === service_id);
 
             // Check if the selected service plan already exists for another service (not the one being edited)
             if (
