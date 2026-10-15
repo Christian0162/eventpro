@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/eventpro-logo.svg" alt="EventPro logo" width="140" />
+<img src="docs/assets/eventpro-logo.png" alt="EventPro logo" width="140" />
 
 # EventPro
 
