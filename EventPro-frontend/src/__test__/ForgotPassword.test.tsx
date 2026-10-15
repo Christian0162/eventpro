@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { toast } from "sonner";
+import { toast } from "@/components/ui/use-toast";
 import { MemoryRouter } from "react-router-dom";
 import { HeadProvider } from "react-head";
 
@@ -12,9 +12,7 @@ jest.mock("firebase/auth", () => ({
     sendPasswordResetEmail: jest.fn(),
 }));
 
-jest.mock("sonner", () => ({
-    toast: { success: jest.fn(), error: jest.fn(), info: jest.fn(), warning: jest.fn(), loading: jest.fn() },
-}));
+jest.mock("@/components/ui/use-toast", () => ({ toast: jest.fn() }));
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
@@ -53,8 +51,10 @@ describe("ForgotPassword Component", () => {
             expect(sendPasswordResetEmail).toHaveBeenCalledWith(mockAuth, "test@gmail.com");
         });
 
-        expect(toast.success).toHaveBeenCalledWith("Reset email sent", {
+        expect(toast).toHaveBeenCalledWith({
+            title: "Reset email sent",
             description: "Check your inbox for the link to reset your password.",
+            variant: "success",
         });
     });
 

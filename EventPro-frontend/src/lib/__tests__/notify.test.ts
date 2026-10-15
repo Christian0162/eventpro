@@ -1,10 +1,8 @@
-import { toast } from "sonner"
+import { toast } from "@/components/ui/use-toast"
 import { friendlyFirebaseError } from "../firebase-errors"
 import { notify } from "../notify"
 
-jest.mock("sonner", () => ({
-  toast: { success: jest.fn(), error: jest.fn(), info: jest.fn(), warning: jest.fn(), loading: jest.fn(() => "toast-id") },
-}))
+jest.mock("@/components/ui/use-toast", () => ({ toast: jest.fn() }))
 
 describe("friendlyFirebaseError", () => {
   it("maps known auth codes", () => {
@@ -17,19 +15,26 @@ describe("friendlyFirebaseError", () => {
 })
 
 describe("notify.promise", () => {
-  beforeEach(() => jest.clearAllMocks())
+  const update = jest.fn()
 
-  it("replaces the loading toast with success only after resolve", async () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+    ;(toast as jest.Mock).mockReturnValue({ id: "1", dismiss: jest.fn(), update })
+  })
+
+  it("shows loading, then updates it to success only after resolve", async () => {
     await notify.promise(Promise.resolve(1), { loading: "Saving…", success: "Saved" })
-    expect(toast.loading).toHaveBeenCalledWith("Saving…")
-    expect(toast.success).toHaveBeenCalledWith("Saved", { id: "toast-id" })
+    expect(toast).toHaveBeenCalledWith(expect.objectContaining({ title: "Saving…" }))
+    expect(update).toHaveBeenCalledWith(expect.objectContaining({ title: "Saved", variant: "success" }))
   })
 
   it("shows a friendly error and rethrows on failure", async () => {
     await expect(
       notify.promise(Promise.reject({ code: "permission-denied" }), { loading: "Saving…", success: "Saved" }),
     ).rejects.toBeDefined()
-    expect(toast.success).not.toHaveBeenCalled()
-    expect(toast.error).toHaveBeenCalledWith("You don't have permission to do that.", { id: "toast-id" })
+    expect(update).toHaveBeenCalledTimes(1)
+    expect(update).toHaveBeenCalledWith(
+      expect.objectContaining({ title: "You don't have permission to do that.", variant: "destructive" }),
+    )
   })
 })

@@ -2,7 +2,7 @@ import { lazy, Suspense, type ComponentType } from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { HeadProvider } from "react-head"
 import Loading from "@/components/atoms/loading"
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/toaster"
 import { Private, Public, RoleOnly } from "@/app/RouteGuards"
 import { useSessionListener } from "@/app/useSessionListener"
 import { useSessionStore } from "@/stores/useSessionStore"
@@ -87,7 +87,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-      <Toaster position="top-right" richColors closeButton />
+      <Toaster />
     </HeadProvider>
   )
 }
