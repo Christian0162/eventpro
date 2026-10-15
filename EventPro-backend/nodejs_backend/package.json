@@ -1,4 +1,7 @@
 {
+  "name": "eventpro-nodejs-backend",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "node server.js"
   },
