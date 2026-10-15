@@ -19,7 +19,7 @@ const STEPS = [
 export function AuthSplit({ title, description, children, footer }: Props) {
   return (
     <div className="grid min-h-screen bg-background lg:grid-cols-2">
-      <main className="flex flex-col px-6 py-8 sm:px-12 lg:px-16 xl:px-24">
+      <main className="flex flex-col lg:order-2 px-6 py-8 sm:px-12 lg:px-16 xl:px-24">
         <Logo />
         <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center py-10">
           <h1 className="font-display text-3xl font-bold">{title}</h1>
@@ -31,7 +31,7 @@ export function AuthSplit({ title, description, children, footer }: Props) {
 
       <aside
         aria-hidden="true"
-        className="relative hidden overflow-hidden bg-primary text-primary-foreground lg:flex lg:flex-col lg:items-center lg:justify-center"
+        className="relative hidden overflow-hidden lg:order-1 bg-primary text-primary-foreground lg:flex lg:flex-col lg:items-center lg:justify-center"
       >
         <div className="absolute -top-24 -right-24 size-80 rounded-full bg-white/10" />
         <div className="absolute -bottom-32 -left-20 size-96 rounded-full bg-white/10" />
