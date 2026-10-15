@@ -1,4 +1,99 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * EventPro design tokens: blue and white.
+ * Primary is Tailwind blue-600 (the app's original brand blue). Secondary and
+ * accent are pale blues so emphasis stays within one hue; neutrals are
+ * slightly blue-tinted greys.
+ */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.04 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.04 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.04 265);
+  --primary: oklch(0.546 0.245 262.9);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.014 254.6);
+  --secondary-foreground: oklch(0.38 0.14 265);
+  --muted: oklch(0.967 0.008 255);
+  --muted-foreground: oklch(0.5 0.03 260);
+  --accent: oklch(0.932 0.032 255.6);
+  --accent-foreground: oklch(0.379 0.146 265.5);
+  --destructive: oklch(0.577 0.245 27.3);
+  --border: oklch(0.92 0.01 255);
+  --input: oklch(0.88 0.015 255);
+  --ring: oklch(0.623 0.214 259.8);
+  --success: oklch(0.55 0.13 155);
+}
+
+.dark {
+  --background: oklch(0.19 0.03 265);
+  --foreground: oklch(0.97 0.005 255);
+  --card: oklch(0.23 0.035 265);
+  --card-foreground: oklch(0.97 0.005 255);
+  --popover: oklch(0.23 0.035 265);
+  --popover-foreground: oklch(0.97 0.005 255);
+  --primary: oklch(0.623 0.214 259.8);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.29 0.045 265);
+  --secondary-foreground: oklch(0.97 0.005 255);
+  --muted: oklch(0.29 0.03 265);
+  --muted-foreground: oklch(0.72 0.03 260);
+  --accent: oklch(0.32 0.07 265);
+  --accent-foreground: oklch(0.93 0.03 255);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.65 0.18 260);
+  --success: oklch(0.7 0.14 155);
+}
+
+@theme inline {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Figtree", ui-sans-serif, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
 
 /* Remove number input spinners globally */
 input[type="number"] {
@@ -14,4 +109,11 @@ input[type="number"]::-webkit-inner-spin-button {
 input::-ms-reveal,
 input::-ms-clear {
   display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
