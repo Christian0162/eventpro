@@ -2,11 +2,11 @@ import type { LegacyProps } from "@/types/firestore";
 import { BadgeCheck, Calendar, Mail, Phone, Store } from "lucide-react";
 import { useState } from "react";
 import { addDoc, collection, getDocs, query, serverTimestamp, where } from 'firebase/firestore';
-import { db } from "../firebase/firebase";
+import { db } from "@/firebase/firebase";
 import { useNavigate } from "react-router-dom";
-import LoadingOverlay from "./LoadingOverlay";
-import { useFetchReviews } from "../hooks/useReviews";
-import { useFetchUserProfiles } from "../hooks/useProfile";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
+import { useFetchReviews } from "@/hooks/useReviews";
+import { useFetchUserProfiles } from "@/hooks/useProfile";
 
 export default function ProfileHover({ hoveredReviewer, user, review }: LegacyProps) {
     const [isCreatingContact, setIsCreatingContact] = useState(false)

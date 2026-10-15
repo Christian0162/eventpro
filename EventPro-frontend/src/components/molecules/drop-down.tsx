@@ -2,7 +2,7 @@ import type { LegacyProps } from "@/types/firestore";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react"
 import { AlignJustify } from "lucide-react";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+import { auth } from "@/firebase/firebase";
 import { Link } from "react-router-dom";
 
 export default function DropDown({ user }: LegacyProps) {
