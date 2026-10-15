@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { Bell, Check } from 'lucide-react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
-import NotificationModal from '../../components/NotificationModal';
+import NotificationModal from '@/components/organisms/notification-modal';
 import { useFetchNotificationsById } from '../../hooks/useNotifications';
-import PageLoading from '../../components/PageLoading';
+import PageLoading from '@/components/atoms/page-loading';
 import { Title } from 'react-head';
 
 export default function Notification({ userData }: LegacyProps) {

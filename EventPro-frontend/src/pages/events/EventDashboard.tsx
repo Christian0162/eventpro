@@ -1,29 +1,29 @@
 import type { LegacyProps } from "@/types/firestore";
 import { CalendarDays, Star, PhilippinePeso, ShieldCheck, Calendar, ReceiptText, BarChart3, ChartNoAxesCombined, CircleAlert } from "lucide-react"
 import { TabGroup, TabPanel, TabPanels, TabList, Tab } from "@headlessui/react"
-import { PieChart, BarChart } from "../../components/Charts"
+import { PieChart, BarChart } from "@/components/molecules/charts"
 import { Title } from "react-head"
 import { useFetchContract } from "../../hooks/useContract"
 import { useEffect, useMemo, useState } from "react"
 import { useFetchEventsById } from "../../hooks/useEvents"
 import { useFetchSuppliers } from "../../hooks/useSupplier"
 import { useFetchTransactionById } from "../../hooks/useTransaction"
-import PageLoading from "../../components/PageLoading"
+import PageLoading from "@/components/atoms/page-loading"
 import { useFetchReviews } from "../../hooks/useReviews"
 import dayGridPlugin from "@fullcalendar/daygrid";
 import FullCalendar from "@fullcalendar/react"
-import GenerateReport from "../../components/GeneraeReport"
+import GenerateReport from "@/components/organisms/generate-report"
 import { lazy, Suspense } from "react";
-import LoadingOverlay from "../../components/LoadingOverlay"
+import LoadingOverlay from "@/components/atoms/loading-overlay"
 import { addDoc, collection, getDocs, query, serverTimestamp, where } from "firebase/firestore"
 import { db } from "../../firebase/firebase"
 import { statusStyles } from "../../constants/categories"
-import { Review } from "../../components/ReviewModal"
+import { Review } from "@/components/organisms/review-modal"
 
 export default function EventDashboard({ userData }: LegacyProps) {
 
-    const EventModal = useMemo(() => lazy(() => import("../../components/EventModal")), [])
-    const ContractModal = useMemo(() => lazy(() => import("../../components/ContractModal")), []);
+    const EventModal = useMemo(() => lazy(() => import("@/components/organisms/event-modal")), [])
+    const ContractModal = useMemo(() => lazy(() => import("@/components/organisms/contract-modal")), []);
     const [isContractModalOpen, setIsContractModalOpen] = useState(false);
     const [selectedContract, setSelectedContract] = useState(null)
     const { contracts, isLoading: isContractsLoading } = useFetchContract()

@@ -7,8 +7,8 @@ import { useFetchUserProfileById, useFetchUserProfiles } from '../hooks/useProfi
 import { useFetchReviews } from '../hooks/useReviews';
 import { formatDistanceToNow } from 'date-fns';
 import { useFetchUsers } from '../hooks/useUsers';
-import ProfileHover from '../components/ProfileHover';
-import PageLoading from '../components/PageLoading';
+import ProfileHover from '@/components/molecules/profile-hover';
+import PageLoading from '@/components/atoms/page-loading';
 import { Title } from 'react-head';
 
 export default function Profile({ userData }: LegacyProps) {

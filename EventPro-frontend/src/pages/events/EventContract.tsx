@@ -4,7 +4,7 @@ import { addDoc, collection, doc, getDocs, query, serverTimestamp, updateDoc, wh
 import { db } from "../../firebase/firebase";
 import { useParams } from "react-router-dom";
 import { Title } from "react-head";
-import PrimaryButton from "../../components/PrimaryButton";
+import PrimaryButton from "@/components/atoms/primary-button";
 import { useFetchSupplierById } from "../../hooks/useSupplier";
 import { Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 import { termsOfCondition } from "../../constants/categories";
 import { useFetchSupplierServices } from "../../hooks/useSupplier";
 import { useFetchEvents } from "../../hooks/useEvents";
-import PageLoading from "../../components/PageLoading";
+import PageLoading from "@/components/atoms/page-loading";
 import { useFetchAllApplication } from "../../hooks/useApplication";
 
 export default function EventContract({ userData }: LegacyProps) {

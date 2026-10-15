@@ -2,16 +2,16 @@ import type { LegacyProps } from "@/types/firestore";
 import Select from "react-select"
 import { useEffect, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
-import AddressAutocomplete from "../../components/AddressAutoComplete";
+import AddressAutocomplete from "@/components/molecules/address-auto-complete";
 import { FileText, IdCard } from "lucide-react";
-import VerificationCheckbox from "../../components/VerificationCheckBox";
+import VerificationCheckbox from "@/components/molecules/verification-check-box";
 import { auth, db } from "../../firebase/firebase";
 import { setDoc, doc, getDoc, updateDoc, query, where, serverTimestamp, addDoc, collection } from "firebase/firestore";
-import UploadWidget from "../../components/UploadWidgen";
+import UploadWidget from "@/components/molecules/upload-widget";
 import { SupplierOptions, idOptions, documentOptions, exampleIds, exampleDocuments } from "../../constants/categories";
 import Swal from "sweetalert2";
-import LoadingOverlay from "../../components/LoadingOverlay";
-import PageLoading from "../../components/PageLoading";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
+import PageLoading from "@/components/atoms/page-loading";
 import { useFetchSuppliers } from "../../hooks/useSupplier";
 
 export default function Verification({ userData }: LegacyProps) {

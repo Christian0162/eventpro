@@ -52,15 +52,15 @@ jest.mock('../firebase/firebase', () => ({
     db: {},
 }));
 
-jest.mock('../components/DeactivateModal', () => () => <div>DeactivateModal</div>);
-jest.mock('../components/EmailVerificationModal', () => () => <div>EmailVerificationModal</div>);
-jest.mock('../components/UpdateModal', () => ({
+jest.mock('@/components/organisms/deactivate-modal', () => () => <div>DeactivateModal</div>);
+jest.mock('@/components/organisms/email-verification-modal', () => () => <div>EmailVerificationModal</div>);
+jest.mock('@/components/organisms/update-modal', () => ({
     UpdateProfile: () => <div>UpdateProfile</div>,
 }));
-jest.mock('../components/LoadingOverlay', () => ({ isLoading, message }) =>
+jest.mock('@/components/atoms/loading-overlay', () => ({ isLoading, message }) =>
     isLoading ? <div data-testid="loading-overlay">{message}</div> : null
 );
-jest.mock('../components/PageLoading', () => () => <div>PageLoading</div>);
+jest.mock('@/components/atoms/page-loading', () => () => <div>PageLoading</div>);
 
 jest.mock('../constants/categories', () => ({
     paymentMethods: [

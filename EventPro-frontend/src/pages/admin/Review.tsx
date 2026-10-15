@@ -4,15 +4,15 @@ import { doc, updateDoc, collection, addDoc, serverTimestamp } from "firebase/fi
 import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react"
 import { IdCard } from "lucide-react";
-import AddressAutocomplete from "../../components/AddressAutoComplete";
+import AddressAutocomplete from "@/components/molecules/address-auto-complete";
 import Select from 'react-select'
 import { FileText } from "lucide-react";
 import Swal from "sweetalert2";
-import { RejectReview } from "../../components/ReviewModal";
-import LoadingOverlay from "../../components/LoadingOverlay";
+import { RejectReview } from "@/components/organisms/review-modal";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 import { useFetchUsers } from "../../hooks/useUsers";
 import { useFetchAllVerification } from "../../hooks/useVerification";
-import PageLoading from "../../components/PageLoading";
+import PageLoading from "@/components/atoms/page-loading";
 
 export default function Review({ userData }: LegacyProps) {
 

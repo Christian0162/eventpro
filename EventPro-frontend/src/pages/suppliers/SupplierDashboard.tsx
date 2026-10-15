@@ -5,7 +5,7 @@ import { Title } from "react-head"
 import { where, query, collection, serverTimestamp, addDoc, getDocs } from "firebase/firestore"
 import { db } from "../../firebase/firebase"
 import { useEffect, useRef, useState } from "react"
-import { LineChart, PieChart, BarChart } from "../../components/Charts"
+import { LineChart, PieChart, BarChart } from "@/components/molecules/charts"
 import { useFetchReviews } from "../../hooks/useReviews"
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -14,23 +14,23 @@ import { useFetchEvents } from "../../hooks/useEvents"
 import { useFetchSupplierById, useFetchSuppliers, useFetchSupplierServices } from "../../hooks/useSupplier"
 import { useMemo } from "react";
 import Swal from "sweetalert2"
-import { Review } from "../../components/ReviewModal"
+import { Review } from "@/components/organisms/review-modal"
 import { useFetchUserProfiles } from "../../hooks/useProfile"
-import PageLoading from "../../components/PageLoading"
+import PageLoading from "@/components/atoms/page-loading"
 import { useFetchDeliveries } from "../../hooks/useDeliveries"
 import { useFetchTransactionById } from "../../hooks/useTransaction"
 import { useFetchAllApplication } from "../../hooks/useApplication"
-import GenerateReport from "../../components/GeneraeReport"
+import GenerateReport from "@/components/organisms/generate-report"
 import { lazy, Suspense } from "react";
-import LoadingOverlay from "../../components/LoadingOverlay"
+import LoadingOverlay from "@/components/atoms/loading-overlay"
 import { statusStyles } from "../../constants/categories"
 import { useFetchUsers } from "../../hooks/useUsers"
 import { formatDistanceToNow } from "date-fns"
-import ProfileHover from "../../components/ProfileHover"
+import ProfileHover from "@/components/molecules/profile-hover"
 
 export default function SupplierDashboard({ userData }: LegacyProps) {
 
-    const EventModal = useMemo(() => lazy(() => import("../../components/EventModal")), [])
+    const EventModal = useMemo(() => lazy(() => import("@/components/organisms/event-modal")), [])
     const analyticsRef = useRef(null);
     const { reviews: reviewed } = useFetchReviews()
     const { contracts } = useFetchContract()
@@ -44,7 +44,7 @@ export default function SupplierDashboard({ userData }: LegacyProps) {
     const { deliveries, isLoading: isDeliveriesLoading } = useFetchDeliveries()
     const { transactions, isLoading: isTransactionLoading } = useFetchTransactionById(userData.id)
     const { applications: userApplications, isLoading: isApplicationLoading } = useFetchAllApplication()
-    const ContractModal = useMemo(() => lazy(() => import("../../components/ContractModal")), []);
+    const ContractModal = useMemo(() => lazy(() => import("@/components/organisms/contract-modal")), []);
     const [isContractModalOpen, setIsContractModalOpen] = useState(false);
     const [isEventModalOpen, setIsEventModalOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);

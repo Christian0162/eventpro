@@ -41,15 +41,15 @@ import { useFetchContract } from '../hooks/useContract'
 import { useFetchAllReports } from '../hooks/useReports'
 
 // Mock the components
-jest.mock('../components/Charts', () => ({
+jest.mock('@/components/molecules/charts', () => ({
   PieChart: () => <div data-testid="pie-chart">Pie Chart</div>,
   BarChart: () => <div data-testid="bar-chart">Bar Chart</div>,
   LineChart: () => <div data-testid="line-chart">Line Chart</div>,
 }))
 
-jest.mock('../components/PageLoading', () => () => <div data-testid="page-loading">Loading...</div>)
-jest.mock('../components/GeneraeReport', () => () => <button data-testid="generate-report">Generate Report</button>)
-jest.mock('../components/ReviewModal', () => ({
+jest.mock('@/components/atoms/page-loading', () => () => <div data-testid="page-loading">Loading...</div>)
+jest.mock('@/components/organisms/generate-report', () => () => <button data-testid="generate-report">Generate Report</button>)
+jest.mock('@/components/organisms/review-modal', () => ({
   ReportReview: ({ report, userData }) => <button data-testid={`report-review-${report.id}`}>Review Report</button>
 }))
 

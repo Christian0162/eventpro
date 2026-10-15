@@ -52,13 +52,13 @@ jest.mock('lucide-react', () => ({
 }));
 
 // Mock components
-jest.mock('../components/PrimaryButton', () => ({ children, onClick, className }) => (
+jest.mock('@/components/atoms/primary-button', () => ({ children, onClick, className }) => (
     <button onClick={onClick} className={className} data-testid="primary-button">
         {children}
     </button>
 ));
 
-jest.mock('../components/PageLoading', () => () => <div data-testid="page-loading">Loading...</div>);
+jest.mock('@/components/atoms/page-loading', () => () => <div data-testid="page-loading">Loading...</div>);
 jest.mock('react-head', () => ({
     Title: () => <title>Contract</title>,
 }));

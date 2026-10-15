@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import EventBookingModal from '../components/EventBookingModal';
+import EventBookingModal from '@/components/organisms/event-booking-modal';
 
 // Mock the useNavigate hook
 const mockNavigate = jest.fn();

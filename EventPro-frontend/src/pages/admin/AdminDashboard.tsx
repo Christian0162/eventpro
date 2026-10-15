@@ -3,17 +3,17 @@ import { useMemo } from "react"
 import { Title } from "react-head";
 import { Users, IdCard, Calendar, BarChart3, ChartNoAxesCombined, TrendingUp, AlertTriangle, ReceiptText, PhilippinePeso, Package, BanknoteArrowUp, ShieldAlert } from "lucide-react";
 import { Tab, TabList, TabPanels, TabGroup, TabPanel } from "@headlessui/react";
-import { PieChart, BarChart, LineChart } from "../../components/Charts";
-import PageLoading from "../../components/PageLoading";
+import { PieChart, BarChart, LineChart } from "@/components/molecules/charts";
+import PageLoading from "@/components/atoms/page-loading";
 import { useFetchAllVerification } from "../../hooks/useVerification";
 import { useFetchUsers } from "../../hooks/useUsers";
 import { useFetchSuppliers } from "../../hooks/useSupplier";
 import { useFetchEvents } from "../../hooks/useEvents";
 import { useFetchAllTransaction } from "../../hooks/useTransaction";
 import { useFetchContract } from "../../hooks/useContract";
-import GenerateReport from "../../components/GeneraeReport";
+import GenerateReport from "@/components/organisms/generate-report";
 import { useFetchAllReports } from "../../hooks/useReports";
-import { ReportReview } from "../../components/ReviewModal";
+import { ReportReview } from "@/components/organisms/review-modal";
 import { statusStyles } from "../../constants/categories";
 
 export default function AdminDashboard({ userData }: LegacyProps) {

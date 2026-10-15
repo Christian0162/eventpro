@@ -1,6 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
 import { Title } from "react-head";
-import Cards from "../../components/Cards";
+import Cards from "@/components/atoms/cards";
 import { MapPin, Clock, Star, DollarSign, MessageCircleMore, Heart, Trash, CalendarDays, CircleDollarSign, Users, CircleAlert, CircleCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,20 +12,20 @@ import { useFetchContract } from "../../hooks/useContract";
 import { useFetchAllTransaction } from "../../hooks/useTransaction";
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, serverTimestamp, where } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-import LoadingOverlay from "../../components/LoadingOverlay";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 import { useFetchEvents } from "../../hooks/useEvents";
 import Swal from "sweetalert2";
 import { useFetchSupplierById } from "../../hooks/useSupplier";
 import ClipLoader from "react-spinners/ClipLoader";
-import PageLoading from "../../components/PageLoading";
+import PageLoading from "@/components/atoms/page-loading";
 import { lazy, Suspense } from "react";
 import { eventStatusStyles } from "../../constants/categories";
 import { useMemo } from "react";
 
 export default function Favorites({ userData }: LegacyProps) {
 
-    const EventModal = useMemo(() => lazy(() => import("../../components/EventModal")), [])
-    const SupplierModal = lazy(() => import("../../components/SupplierModal"));
+    const EventModal = useMemo(() => lazy(() => import("@/components/organisms/event-modal")), [])
+    const SupplierModal = lazy(() => import("@/components/organisms/supplier-modal"));
     const { favorites, isLoading: isFavoritesLoading } = useFetchFavorites()
     const { suppliers } = useFetchSuppliers()
     const { services } = useFetchSupplierServices()

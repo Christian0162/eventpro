@@ -51,7 +51,7 @@ jest.mock('../hooks/useUsers', () => ({
 }))
 
 // Mock components that use problematic features
-jest.mock('../components/AddressAutoComplete', () => ({
+jest.mock('@/components/molecules/address-auto-complete', () => ({
   __esModule: true,
   default: function MockAddressAutoComplete({ setLocation, setCoords, disabled, default_location, className }) {
     return (
@@ -68,7 +68,7 @@ jest.mock('../components/AddressAutoComplete', () => ({
   }
 }))
 
-jest.mock('../components/PrimaryButton', () => ({
+jest.mock('@/components/atoms/primary-button', () => ({
   __esModule: true,
   default: function MockPrimaryButton({ children, className, onClick, type = "button" }) {
     return (
@@ -84,7 +84,7 @@ jest.mock('../components/PrimaryButton', () => ({
   }
 }))
 
-jest.mock('../components/ReviewModal', () => ({
+jest.mock('@/components/organisms/review-modal', () => ({
   Review: function MockReview({ reviewed_id, reviewer_name, eventData }) {
     return <button data-testid="review-button">Leave Review</button>
   },
@@ -93,27 +93,27 @@ jest.mock('../components/ReviewModal', () => ({
   }
 }))
 
-jest.mock('../components/UpdateModal', () => ({
+jest.mock('@/components/organisms/update-modal', () => ({
   UpdateEventBackground: function MockUpdateEventBackground({ id, className }) {
     return <button data-testid="update-background" className={className}>Update Background</button>
   }
 }))
 
-jest.mock('../components/ProfileHover', () => ({
+jest.mock('@/components/molecules/profile-hover', () => ({
   __esModule: true,
   default: function MockProfileHover({ hoveredReviewer, user, review }) {
     return <div data-testid="profile-hover">Profile Hover</div>
   }
 }))
 
-jest.mock('../components/PageLoading', () => ({
+jest.mock('@/components/atoms/page-loading', () => ({
   __esModule: true,
   default: function MockPageLoading() {
     return <div data-testid="page-loading">Loading...</div>
   }
 }))
 
-jest.mock('../components/LoadingOverlay', () => ({
+jest.mock('@/components/atoms/loading-overlay', () => ({
   __esModule: true,
   default: function MockLoadingOverlay({ isLoading, message }) {
     return isLoading ? <div data-testid="loading-overlay">{message}</div> : null
@@ -145,14 +145,14 @@ jest.mock('react-select', () => {
 })
 
 // Mock lazy components
-jest.mock('../components/SupplierModal', () => ({
+jest.mock('@/components/organisms/supplier-modal', () => ({
   __esModule: true,
   default: function MockSupplierModal({ isOpen, onClose, supplierData, services, reviews, userData, averageRating, applications }) {
     return isOpen ? <div data-testid="supplier-modal">Supplier Modal</div> : null
   }
 }))
 
-jest.mock('../components/ContractModal', () => ({
+jest.mock('@/components/organisms/contract-modal', () => ({
   __esModule: true,
   default: function MockContractModal({ isOpen, onClose, userData, event_id, user_id, supplier_id, eventData, supplierData }) {
     return isOpen ? <div data-testid="contract-modal">Contract Modal</div> : null

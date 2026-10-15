@@ -1,9 +1,9 @@
 import { useEffect, type ReactNode } from "react"
 import { signOut, type User } from "firebase/auth"
 import { auth } from "@/firebase/firebase"
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
-import Loading from "@/components/Loading"
+import NavBar from "@/components/organisms/nav-bar"
+import Footer from "@/components/organisms/footer"
+import Loading from "@/components/atoms/loading"
 import { notify } from "@/lib/notify"
 import type { UserData } from "@/stores/useSessionStore"
 

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import DeactivateModal from '../components/DeactivateModal'
+import DeactivateModal from '@/components/organisms/deactivate-modal'
 import { auth, db } from '../firebase/firebase'
 import Swal from 'sweetalert2'
 
@@ -41,7 +41,7 @@ jest.mock('sweetalert2', () => ({
 }))
 
 // Mock LoadingOverlay component
-jest.mock('../components/LoadingOverlay', () => {
+jest.mock('@/components/atoms/loading-overlay', () => {
     return function MockLoadingOverlay({ isLoading, message }) {
         if (!isLoading) return null
         return <div data-testid="loading-overlay">{message}</div>

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import AIModal from '../components/AIModal';
+import AIModal from '@/components/organisms/ai-modal';
 
 // Mock everything that might cause issues
 jest.mock('../firebase/firebase', () => ({

@@ -10,9 +10,9 @@ import Swal from "sweetalert2";
 import { useFetchEvents } from "../../hooks/useEvents";
 import { useDeleteEvent } from "../../hooks/useEvents";
 import { useNavigate } from "react-router-dom";
-import LoadingOverlay from "../../components/LoadingOverlay";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 import { useFetchAllApplication } from "../../hooks/useApplication";
-import PageLoading from "../../components/PageLoading";
+import PageLoading from "@/components/atoms/page-loading";
 import { eventStatusStyles } from "../../constants/categories";
 import { useFetchContract } from "../../hooks/useContract";
 import { useFetchAllTransaction } from "../../hooks/useTransaction";
@@ -20,7 +20,7 @@ import { useFetchSuppliers, useFetchSupplierServices } from "../../hooks/useSupp
 
 
 export default function Event({ userData }: LegacyProps) {
-    const EventModal = useMemo(() => lazy(() => import("../../components/EventModal")), [])
+    const EventModal = useMemo(() => lazy(() => import("@/components/organisms/event-modal")), [])
     const [isCreatingFavorites, setIsCreatingFavorites] = useState(false)
     const [isCreatingContact, setIsCreatingContact] = useState(false)
     const [likedEvents, setLikedEvents] = useState({});

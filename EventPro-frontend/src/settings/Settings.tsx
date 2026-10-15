@@ -7,17 +7,17 @@ import { db } from '../firebase/firebase';
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import bcrypt from 'bcryptjs';
-import DeactivateModal from '../components/DeactivateModal';
-import EmailVerificationModal from '../components/EmailVerificationModal';
+import DeactivateModal from '@/components/organisms/deactivate-modal';
+import EmailVerificationModal from '@/components/organisms/email-verification-modal';
 import { paymentMethods } from '../constants/categories';
 import { useCreatePayout } from '../hooks/usePayout';
 import { CircleAlert } from 'lucide-react';
 import { useFetchTransactionById } from '../hooks/useTransaction';
 import { formatDistanceToNow } from 'date-fns';
-import LoadingOverlay from '../components/LoadingOverlay';
-import { UpdateProfile } from '../components/UpdateModal';
+import LoadingOverlay from '@/components/atoms/loading-overlay';
+import { UpdateProfile } from '@/components/organisms/update-modal';
 import { useFetchUserProfileById } from '../hooks/useProfile';
-import PageLoading from '../components/PageLoading';
+import PageLoading from '@/components/atoms/page-loading';
 import { Title } from 'react-head';
 
 export default function Settings({ userData, user }: LegacyProps) {

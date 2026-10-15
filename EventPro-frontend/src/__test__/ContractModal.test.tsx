@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import ContractModal from '../components/ContractModal';
+import ContractModal from '@/components/organisms/contract-modal';
 
 // Mock individual hook files - ADD THE MISSING MOCK
 jest.mock('../hooks/useTransaction', () => ({
@@ -37,11 +37,11 @@ jest.mock('filepond/dist/filepond.min.css', () => ({}));
 jest.mock('filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css', () => ({}));
 
 // Mock child components
-jest.mock('../components/SubmissionModal', () => () => <div>Submission Modal</div>);
-jest.mock('../components/DamagePenaltiesModal', () => () => <div>Damage Penalties</div>);
-jest.mock('../components/ReportModal', () => () => <div>Report Modal</div>);
-jest.mock('../components/LoadingOverlay', () => () => <div>Loading Overlay</div>);
-jest.mock('../components/PageLoading', () => () => <div>Page Loading</div>);
+jest.mock('@/components/organisms/submission-modal', () => () => <div>Submission Modal</div>);
+jest.mock('@/components/organisms/damage-penalties-modal', () => () => <div>Damage Penalties</div>);
+jest.mock('@/components/organisms/report-modal', () => () => <div>Report Modal</div>);
+jest.mock('@/components/atoms/loading-overlay', () => () => <div>Loading Overlay</div>);
+jest.mock('@/components/atoms/page-loading', () => () => <div>Page Loading</div>);
 
 // Mock Firebase
 jest.mock('../firebase/firebase', () => ({

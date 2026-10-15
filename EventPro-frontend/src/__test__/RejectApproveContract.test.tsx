@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 
 // Completely mock the ContractModal component with proper buttons
-jest.mock('../components/ContractModal', () => {
+jest.mock('@/components/organisms/contract-modal', () => {
   return function MockContractModal(props) {
     const { userData, eventData, supplierData, onClose } = props;
     const isSupplier = userData?.role === 'Supplier';
@@ -88,7 +88,7 @@ jest.mock('sweetalert2', () => ({
 }));
 
 // Import the mocked component
-import ContractModal from '../components/ContractModal';
+import ContractModal from '@/components/organisms/contract-modal';
 
 // Mock data
 const mockEventPlannerData = {

@@ -1,27 +1,27 @@
 import type { LegacyProps } from "@/types/firestore";
 import type { Doc } from "@/types/firestore";
 import { useState, useEffect, useMemo } from "react"
-import AddressAutoComplete from "../../components/AddressAutoComplete";
+import AddressAutoComplete from "@/components/molecules/address-auto-complete";
 import Select from "react-select"
 import { X, Calendar, MapPin, Tag, Users, FileText, Send, Check, CircleCheck } from "lucide-react";
-import PrimaryButton from "../../components/PrimaryButton";
+import PrimaryButton from "@/components/atoms/primary-button";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import Swal from "sweetalert2";
 import { useFetchEvents, useUpdateEvent } from "../../hooks/useEvents";
-import { Review } from '../../components/ReviewModal'
+import { Review } from '@/components/organisms/review-modal'
 import { useParams, Link } from "react-router-dom";
 import { useFetchReviews } from "../../hooks/useReviews";
 import { useFetchSupplierServices, useFetchSuppliers } from "../../hooks/useSupplier";
 import { useFetchContract } from "../../hooks/useContract";
 import { eventStatusStyles, EventTypeOptions, headerBackgrounds, SupplierOptions } from "../../constants/categories";
-import { RejectReview } from "../../components/ReviewModal";
-import LoadingOverlay from "../../components/LoadingOverlay";
+import { RejectReview } from "@/components/organisms/review-modal";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 import { useFetchUserProfiles } from "../../hooks/useProfile";
 import { useFetchUsers } from "../../hooks/useUsers";
-import ProfileHover from "../../components/ProfileHover";
-import PageLoading from "../../components/PageLoading";
-import { UpdateEventBackground } from "../../components/UpdateModal";
+import ProfileHover from "@/components/molecules/profile-hover";
+import PageLoading from "@/components/atoms/page-loading";
+import { UpdateEventBackground } from "@/components/organisms/update-modal";
 import { useFetchAllTransaction } from "../../hooks/useTransaction";
 import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
@@ -29,8 +29,8 @@ import { Title } from "react-head";
 
 export default function EditEvent({ userData }: LegacyProps) {
 
-    const SupplierModal = useMemo(() => lazy(() => import("../../components/SupplierModal")), []);
-    const ContractModal = useMemo(() => lazy(() => import("../../components/ContractModal")), []);
+    const SupplierModal = useMemo(() => lazy(() => import("@/components/organisms/supplier-modal")), []);
+    const ContractModal = useMemo(() => lazy(() => import("@/components/organisms/contract-modal")), []);
 
     const navigate = useNavigate()
     const { id } = useParams();

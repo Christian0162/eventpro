@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
-import { Review } from '../components/ReviewModal'
+import { Review } from '@/components/organisms/review-modal'
 
 // Mock all external dependencies
 jest.mock('firebase/firestore', () => ({
@@ -54,7 +54,7 @@ jest.mock('lucide-react', () => ({
 }))
 
 // Mock other imports
-jest.mock('../components/LoadingOverlay', () => ({
+jest.mock('@/components/atoms/loading-overlay', () => ({
   __esModule: true,
   default: ({ isLoading, message }) => 
     isLoading ? <div data-testid="loading-overlay">{message}</div> : null

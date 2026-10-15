@@ -1,11 +1,11 @@
 import type { LegacyProps } from "@/types/firestore";
 import Select from "react-select";
 import { useEffect, useState } from "react";
-import PrimaryButton from "../../components/PrimaryButton";
+import PrimaryButton from "@/components/atoms/primary-button";
 import { Link, Navigate } from "react-router-dom";
 import { X, Calendar, Tag, Send } from "lucide-react";
-import LoadingOverlay from "../../components/LoadingOverlay";
-import AddressAutoComplete from "../../components/AddressAutoComplete";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
+import AddressAutoComplete from "@/components/molecules/address-auto-complete";
 import { useAddEvent } from "../../hooks/useEvents";
 import { EventTypeOptions, SupplierOptions } from "../../constants/categories";
 import { Title } from "react-head";

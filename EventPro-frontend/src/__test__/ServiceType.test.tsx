@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import ServiceModal from '../components/ServiceModal'
+import ServiceModal from '@/components/organisms/service-modal'
 
 // Mock dependencies
 jest.mock('sweetalert2', () => ({

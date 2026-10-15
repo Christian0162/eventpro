@@ -3,7 +3,7 @@ import Dashboard from "../pages/Dashboard";
 import EventDashboard from "../pages/events/EventDashboard";
 import SupplierDashboard from "../pages/suppliers/SupplierDashboard";
 import { Navigate } from "react-router-dom";
-import Loading from "../components/Loading";
+import Loading from "@/components/atoms/loading";
 
 // Mock sub-components
 jest.mock("../pages/events/EventDashboard", () => jest.fn(() => <div data-testid="event-dashboard">Event Dashboard</div>));
@@ -12,7 +12,7 @@ jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
     Navigate: jest.fn(({ to }) => <div data-testid="navigate">{to}</div>)
 }));
-jest.mock("../components/Loading", () => jest.fn(() => <div data-testid="loading">Loading...</div>));
+jest.mock("@/components/atoms/loading", () => jest.fn(() => <div data-testid="loading">Loading...</div>));
 
 describe("Dashboard Component", () => {
     beforeEach(() => {

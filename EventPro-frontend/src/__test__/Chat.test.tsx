@@ -46,7 +46,7 @@ jest.mock('../firebase/firebase', () => ({
     db: {},
 }));
 
-jest.mock('../components/PageLoading', () => {
+jest.mock('@/components/atoms/page-loading', () => {
     return function MockPageLoading() {
         return <div data-testid="page-loading">Loading...</div>;
     };

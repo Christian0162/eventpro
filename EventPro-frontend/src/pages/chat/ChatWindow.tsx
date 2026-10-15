@@ -8,7 +8,7 @@ import { useFetchUsers } from "../../hooks/useUsers";
 import { useFetchUserProfiles } from "../../hooks/useProfile";
 import { useFetchSuppliers } from "../../hooks/useSupplier";
 import { useFetchAllContact } from "../../hooks/useContact";
-import PageLoading from "../../components/PageLoading";
+import PageLoading from "@/components/atoms/page-loading";
 import { Title } from "react-head";
 
 

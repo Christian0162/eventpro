@@ -1,22 +1,22 @@
 import type { LegacyProps } from "@/types/firestore";
 import { Search, MapPin, PhilippinePeso, Clock, Star, Bot } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import Cards from "../../components/Cards";
+import Cards from "@/components/atoms/cards";
 import CreatableSelect from 'react-select/creatable';
 import { SupplierOptions } from "../../constants/categories";
 import { lazy, Suspense } from "react";
-import AIModal from "../../components/AIModal";
+import AIModal from "@/components/organisms/ai-modal";
 import { Typewriter } from 'react-simple-typewriter'
 import { useFetchSuppliers, useFetchSupplierServices } from "../../hooks/useSupplier";
 import { useFetchReviews } from "../../hooks/useReviews";
 import { useFetchAllApplication } from "../../hooks/useApplication";
 import { useFetchEventsById } from "../../hooks/useEvents";
-import PageLoading from "../../components/PageLoading";
-import LoadingOverlay from "../../components/LoadingOverlay";
+import PageLoading from "@/components/atoms/page-loading";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 
 export default function Supplier({ userData }: LegacyProps) {
 
-    const SupplierModal = useMemo(() => lazy(() => import("../../components/SupplierModal")), []);
+    const SupplierModal = useMemo(() => lazy(() => import("@/components/organisms/supplier-modal")), []);
 
     const [category, setCategory] = useState(null);
     const [shop, setShop] = useState([]);

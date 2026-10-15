@@ -23,11 +23,11 @@ jest.mock('../hooks/useEvents', () => ({
 // Mock other dependencies
 jest.mock('sweetalert2');
 
-jest.mock('../components/LoadingOverlay', () => ({ isLoading, message }) =>
+jest.mock('@/components/atoms/loading-overlay', () => ({ isLoading, message }) =>
     isLoading ? <div data-testid="loading-overlay">{message}</div> : null
 );
 
-jest.mock('../components/AddressAutoComplete', () => ({
+jest.mock('@/components/molecules/address-auto-complete', () => ({
     setLocation,
     setCoords,
     default_location,

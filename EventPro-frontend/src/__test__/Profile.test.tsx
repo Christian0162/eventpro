@@ -40,8 +40,8 @@ jest.mock('../hooks/useUsers', () => ({
 }));
 
 // Mock components
-jest.mock('../components/ProfileHover', () => () => <div>ProfileHover</div>);
-jest.mock('../components/PageLoading', () => () => <div>Loading...</div>);
+jest.mock('@/components/molecules/profile-hover', () => () => <div>ProfileHover</div>);
+jest.mock('@/components/atoms/page-loading', () => () => <div>Loading...</div>);
 
 // Mock Lucide React icons
 jest.mock('lucide-react', () => ({

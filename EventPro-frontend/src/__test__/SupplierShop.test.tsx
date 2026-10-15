@@ -13,10 +13,10 @@ jest.mock('../hooks/useReviews', () => ({
 }))
 
 // Mock all components as simple divs
-jest.mock('../components/ShopBackgroundModal', () => ({ ShopBackgroundModal: () => <div /> }))
-jest.mock('../components/SupplierPanels', () => () => <div />)
-jest.mock('../components/PageLoading', () => () => <div data-testid="loading">Loading</div>)
-jest.mock('../components/UpdateModal', () => ({ SupplierDetails: () => <div /> }))
+jest.mock('@/components/organisms/shop-background-modal', () => ({ ShopBackgroundModal: () => <div /> }))
+jest.mock('@/components/organisms/supplier-panels', () => () => <div />)
+jest.mock('@/components/atoms/page-loading', () => () => <div data-testid="loading">Loading</div>)
+jest.mock('@/components/organisms/update-modal', () => ({ SupplierDetails: () => <div /> }))
 jest.mock('../pages/suppliers/SupplierRegistration', () => () => <div data-testid="registration">Registration</div>)
 jest.mock('react-head', () => ({ Title: () => null }))
 jest.mock('lucide-react', () => ({

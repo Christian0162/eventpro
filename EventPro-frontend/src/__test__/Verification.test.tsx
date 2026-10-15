@@ -2,20 +2,20 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 // Mock everything at the top level
-jest.mock("../components/AddressAutoComplete", () => ({ setLocation }) => (
+jest.mock("@/components/molecules/address-auto-complete", () => ({ setLocation }) => (
     <input data-testid="address-autocomplete" onChange={(e) => setLocation(e.target.value)} />
 ));
 
-jest.mock("../components/UploadWidgen", () => ({ setId, setDoc }) => (
+jest.mock("@/components/molecules/upload-widget", () => ({ setId, setDoc }) => (
     <button data-testid="upload-widget" onClick={() => { setId(["id1", "id2"]); setDoc(["doc1"]); }}>Upload IDs/Documents</button>
 ));
 
-jest.mock("../components/VerificationCheckBox", () => ({ checked, onChange }) => (
+jest.mock("@/components/molecules/verification-check-box", () => ({ checked, onChange }) => (
     <input type="checkbox" checked={checked} onChange={onChange} data-testid="verification-checkbox" />
 ));
 
-jest.mock("../components/LoadingOverlay", () => ({ isLoading }) => isLoading ? <div data-testid="loading-overlay">Loading...</div> : null);
-jest.mock("../components/PageLoading", () => ({ isLoading }) => isLoading ? <div data-testid="page-loading">Page Loading...</div> : null);
+jest.mock("@/components/atoms/loading-overlay", () => ({ isLoading }) => isLoading ? <div data-testid="loading-overlay">Loading...</div> : null);
+jest.mock("@/components/atoms/page-loading", () => ({ isLoading }) => isLoading ? <div data-testid="page-loading">Page Loading...</div> : null);
 
 jest.mock("react-router-dom", () => ({
     Navigate: jest.fn(() => null),

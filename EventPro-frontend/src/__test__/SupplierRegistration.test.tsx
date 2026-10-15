@@ -17,7 +17,7 @@ jest.mock('sweetalert2', () => ({
     fire: jest.fn(() => Promise.resolve({ isConfirmed: true }))
 }));
 
-jest.mock('../components/AddressAutoComplete', () => {
+jest.mock('@/components/molecules/address-auto-complete', () => {
     return function MockAddressAutocomplete({ setLocation, setCoords }) {
         return (
             <input
@@ -32,7 +32,7 @@ jest.mock('../components/AddressAutoComplete', () => {
     };
 });
 
-jest.mock('../components/AvailabilityPicker', () => {
+jest.mock('@/components/molecules/availability-picker', () => {
     return function MockAvailabilityPicker({ onChange, setTimeError }) {
         return (
             <button
@@ -48,7 +48,7 @@ jest.mock('../components/AvailabilityPicker', () => {
     };
 });
 
-jest.mock('../components/LoadingOverlay', () => {
+jest.mock('@/components/atoms/loading-overlay', () => {
     return function MockLoadingOverlay({ isLoading, message }) {
         if (!isLoading) return null;
         return <div data-testid="loading-overlay">{message}</div>;

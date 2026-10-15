@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import GenerateReport from '../components/GeneraeReport';
+import GenerateReport from '@/components/organisms/generate-report';
 
 // Simple global mocks to avoid complex mocking issues
 beforeAll(() => {

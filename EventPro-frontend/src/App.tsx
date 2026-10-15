@@ -1,7 +1,7 @@
 import { lazy, Suspense, type ComponentType } from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { HeadProvider } from "react-head"
-import Loading from "@/components/Loading"
+import Loading from "@/components/atoms/loading"
 import { Toaster } from "@/components/ui/sonner"
 import { Private, Public, RoleOnly } from "@/app/RouteGuards"
 import { useSessionListener } from "@/app/useSessionListener"
@@ -31,8 +31,8 @@ const SupplierShop = lazy(() => import("@/pages/suppliers/SupplierShop"))
 const Favorites = lazy(() => import("@/pages/favorites/Favorites"))
 const ChatWindow = lazy(() => import("@/pages/chat/ChatWindow"))
 const Notification = lazy(() => import("@/pages/notifications/Notification"))
-const PaymentSuccess = lazy(() => import("@/components/SuccessPayment"))
-const Error404 = lazy(() => import("@/components/Error404"))
+const PaymentSuccess = lazy(() => import("@/components/organisms/success-payment"))
+const Error404 = lazy(() => import("@/components/organisms/error-404"))
 
 export default function App() {
   useSessionListener()

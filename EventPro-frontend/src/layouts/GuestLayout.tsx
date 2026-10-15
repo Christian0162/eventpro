@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 import type { User } from "firebase/auth"
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
+import NavBar from "@/components/organisms/nav-bar"
+import Footer from "@/components/organisms/footer"
 import type { UserData } from "@/stores/useSessionStore"
 
 interface Props {

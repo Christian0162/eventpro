@@ -52,26 +52,26 @@ jest.mock('../hooks/useProfile', () => ({
 }));
 
 // Mock components
-jest.mock('../components/DeactivateModal', () => ({
+jest.mock('@/components/organisms/deactivate-modal', () => ({
     __esModule: true,
     default: jest.fn(() => <div>DeactivateModal</div>),
 }));
 
-jest.mock('../components/EmailVerificationModal', () => ({
+jest.mock('@/components/organisms/email-verification-modal', () => ({
     __esModule: true,
     default: jest.fn(() => <div>EmailVerificationModal</div>),
 }));
 
-jest.mock('../components/UpdateModal', () => ({
+jest.mock('@/components/organisms/update-modal', () => ({
     UpdateProfile: jest.fn(() => <button>Update Profile</button>),
 }));
 
-jest.mock('../components/LoadingOverlay', () => ({
+jest.mock('@/components/atoms/loading-overlay', () => ({
     __esModule: true,
     default: jest.fn(() => null),
 }));
 
-jest.mock('../components/PageLoading', () => ({
+jest.mock('@/components/atoms/page-loading', () => ({
     __esModule: true,
     default: jest.fn(() => null),
 }));

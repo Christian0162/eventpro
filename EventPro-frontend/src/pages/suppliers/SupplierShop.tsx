@@ -3,13 +3,13 @@ import type { Doc } from "@/types/firestore";
 import { MapPin, CircleCheckBig, Star, Edit3, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
-import { ShopBackgroundModal } from "../../components/ShopBackgroundModal"
+import { ShopBackgroundModal } from "@/components/organisms/shop-background-modal"
 import SupplierRegistration from "./SupplierRegistration"
-import SupplierPanels from "../../components/SupplierPanels"
-import { SupplierDetails } from "../../components/UpdateModal"
+import SupplierPanels from "@/components/organisms/supplier-panels"
+import { SupplierDetails } from "@/components/organisms/update-modal"
 import { useFetchSuppliers, useFetchSupplierServices } from "../../hooks/useSupplier"
 import { useFetchReviews } from "../../hooks/useReviews"
-import PageLoading from "../../components/PageLoading"
+import PageLoading from "@/components/atoms/page-loading"
 import { Title } from "react-head"
 
 export default function SupplierShop({ userData }: LegacyProps) {

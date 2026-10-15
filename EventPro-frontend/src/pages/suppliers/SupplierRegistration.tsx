@@ -1,6 +1,6 @@
 import { MapPin, Mail, Phone, Clock, PhilippinePeso, Calendar } from 'lucide-react';
 import Select from 'react-select';
-import AddressAutocomplete from '../../components/AddressAutoComplete';
+import AddressAutocomplete from '@/components/molecules/address-auto-complete';
 import { useState, useEffect } from 'react';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
@@ -8,8 +8,8 @@ import { auth } from '../../firebase/firebase';
 import Swal from 'sweetalert2'
 import { SupplierOptions } from '../../constants/categories';
 import { supplierTypeToExpertise } from '../../constants/categories';
-import LoadingOverlay from '../../components/LoadingOverlay';
-import AvailabilityPicker from '../../components/AvailabilityPicker';
+import LoadingOverlay from '@/components/atoms/loading-overlay';
+import AvailabilityPicker from '@/components/molecules/availability-picker';
 
 export default function SupplierRegistration() {
 
