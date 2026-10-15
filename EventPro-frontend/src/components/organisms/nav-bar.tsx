@@ -1,16 +1,16 @@
 import { memo } from "react"
 import { NavLink } from "react-router-dom"
-import { Heart, Menu, MessageCircleMore } from "lucide-react"
+import { ChartNoAxesCombined, Heart, Menu, MessageCircleMore } from "lucide-react"
 import type { User } from "firebase/auth"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Logo } from "@/components/atoms/logo"
 import { cn } from "@/lib/utils"
-import { useUIStore } from "@/stores/useUIStore"
-import type { UserData } from "@/stores/useSessionStore"
+import { useUIStore } from "@/stores/use-uistore"
+import type { UserData } from "@/types/session"
 import UserDropDown from "@/components/molecules/user-dropdown"
 import UserNotification from "@/components/organisms/user-notification"
-import { useFetchAllContact } from "@/hooks/useContact"
+import { useFetchAllContact } from "@/hooks/use-contact"
 
 interface Contact {
   user_id?: string
@@ -75,6 +75,11 @@ const NavBar = memo(function NavBar({ user, userData }: NavBarProps) {
         <div className="hidden items-center gap-1 md:flex">
           {user ? (
             <>
+              {userData?.role !== "Admin" && (
+                <NavLink to="/analytics" className={linkClass} aria-label="Analytics" title="Analytics">
+                  <ChartNoAxesCombined className="size-5" />
+                </NavLink>
+              )}
               <NavLink to="/favorites" className={linkClass} aria-label="Favorites">
                 <Heart className="size-5" />
               </NavLink>
@@ -114,6 +119,11 @@ const NavBar = memo(function NavBar({ user, userData }: NavBarProps) {
               ))}
               {user && (
                 <>
+                  {userData?.role !== "Admin" && (
+                    <NavLink to="/analytics" className={linkClass} onClick={() => setMobileOpen(false)}>
+                      Analytics
+                    </NavLink>
+                  )}
                   <NavLink to="/favorites" className={linkClass} onClick={() => setMobileOpen(false)}>
                     Favorites
                   </NavLink>
