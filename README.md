@@ -19,9 +19,9 @@
 
 | | Component | Package | Version | Stack | Path |
 | --- | --- | --- | --- | --- | --- |
-| <img src="docs/assets/eventpro-logo.svg" width="32" /> | **Frontend** | `eventpro-frontend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | React 19 · Vite | [`EventPro-frontend/`](EventPro-frontend) |
-| <img src="docs/assets/eventpro-logo.svg" width="32" /> | **Delivery Backend** | `eventpro-nodejs-backend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | Node.js · Express | [`EventPro-backend/nodejs_backend/`](EventPro-backend/nodejs_backend) |
-| <img src="docs/assets/eventpro-logo.svg" width="32" /> | **Payments & AI Backend** | `eventpro-python-backend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | Python · FastAPI | [`EventPro-backend/python_backend/`](EventPro-backend/python_backend) |
+| <img src="docs/assets/eventpro-logo.png" width="32" /> | **Frontend** | `eventpro-frontend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | React 19 · Vite | [`EventPro-frontend/`](EventPro-frontend) |
+| <img src="docs/assets/eventpro-logo.png" width="32" /> | **Delivery Backend** | `eventpro-nodejs-backend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | Node.js · Express | [`EventPro-backend/nodejs_backend/`](EventPro-backend/nodejs_backend) |
+| <img src="docs/assets/eventpro-logo.png" width="32" /> | **Payments & AI Backend** | `eventpro-python-backend` | ![v](https://img.shields.io/badge/version-0.0.0-blue) | Python · FastAPI | [`EventPro-backend/python_backend/`](EventPro-backend/python_backend) |
 
 EventPro is a web platform that connects event organizers with suppliers (catering, venues, equipment, etc.), covering the full flow from discovery and booking to contracts, payments, delivery logistics, and reviews.
 
