@@ -7,12 +7,12 @@ import { Private, Public, RoleOnly } from "@/app/route-guards"
 import { useSessionListener } from "@/app/use-session-listener"
 import { useSessionStore } from "@/stores/use-session-store"
 
-const HomePage = lazy(() => import("@/pages/home-page"))
+const HomePage = lazy(() => import("@/pages/home/home-page"))
 const Login = lazy(() => import("@/pages/auth/login"))
 const Register = lazy(() => import("@/pages/auth/register"))
 const ForgotPassword = lazy(() => import("@/pages/auth/forgot-password"))
 const ResetPassword = lazy(() => import("@/pages/auth/reset-password"))
-const Dashboard = lazy(() => import("@/pages/dashboard"))
+const Dashboard = lazy(() => import("@/pages/dashboard/dashboard"))
 const AdminDashboard = lazy(() => import("@/pages/admin/admin-dashboard"))
 const Review = lazy(() => import("@/pages/admin/review"))
 const Verification = lazy(() => import("@/pages/verify/verification"))
