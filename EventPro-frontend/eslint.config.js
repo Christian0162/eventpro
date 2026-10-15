@@ -2,9 +2,23 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
 
 export default [
   { ignores: ['dist'] },
+  ...tseslint.configs.recommended.map((c) => ({ ...c, files: ['**/*.{ts,tsx}'] })),
+  {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: { globals: { ...globals.browser, ...globals.jest } },
+    plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      // shadcn/ui primitives export variants alongside components
+      'react-refresh/only-export-components': 'off',
+      // Tests mock modules with require() after jest.mock hoisting.
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -31,7 +45,7 @@ export default [
     },
   },
   {
-    files: ['**/__test__/**/*.{js,jsx}', '**/*.test.{js,jsx}'],
+    files: ['**/__test__/**/*.{js,jsx,ts,tsx}', '**/*.test.{js,jsx,ts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,

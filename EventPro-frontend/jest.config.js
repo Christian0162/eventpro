@@ -5,4 +5,7 @@ export default {
         "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
     },
     moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
+    moduleNameMapper: {
+        "^@/(.*)$": "<rootDir>/src/$1",
+    },
 };
