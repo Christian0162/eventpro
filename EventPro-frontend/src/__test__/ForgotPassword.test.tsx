@@ -1,8 +1,9 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import { sendPasswordResetEmail } from "firebase/auth";
-import Swal from "sweetalert2";
+import { toast } from "sonner";
 import { MemoryRouter } from "react-router-dom";
+import { HeadProvider } from "react-head";
 
 // Mock dependencies
 const mockAuth = {};
@@ -11,8 +12,8 @@ jest.mock("firebase/auth", () => ({
     sendPasswordResetEmail: jest.fn(),
 }));
 
-jest.mock("sweetalert2", () => ({
-    fire: jest.fn(),
+jest.mock("sonner", () => ({
+    toast: { success: jest.fn(), error: jest.fn(), info: jest.fn(), warning: jest.fn(), loading: jest.fn() },
 }));
 
 jest.mock("react-router-dom", () => ({
@@ -24,7 +25,9 @@ jest.mock("react-router-dom", () => ({
 const renderForgotPassword = () =>
     render(
         <MemoryRouter>
-            <ForgotPassword />
+            <HeadProvider>
+                <ForgotPassword />
+            </HeadProvider>
         </MemoryRouter>
     );
 
@@ -34,7 +37,7 @@ describe("ForgotPassword Component", () => {
     });
 
     test("TC-004: Submit valid email — Reset link sent (Performed as expected, Passed)", async () => {
-        sendPasswordResetEmail.mockResolvedValueOnce();
+        (sendPasswordResetEmail as jest.Mock).mockResolvedValueOnce(undefined);
 
         renderForgotPassword();
 
@@ -50,16 +53,13 @@ describe("ForgotPassword Component", () => {
             expect(sendPasswordResetEmail).toHaveBeenCalledWith(mockAuth, "test@gmail.com");
         });
 
-        expect(Swal.fire).toHaveBeenCalledWith({
-            icon: "success",
-            title: "Success",
-            text: "Password reset email sent! Check your inbox.",
-            confirmButtonText: "OK",
+        expect(toast.success).toHaveBeenCalledWith("Reset email sent", {
+            description: "Check your inbox for the link to reset your password.",
         });
     });
 
     test("TC-005: Unregistered email — Reset link send failed (Performed as expected, Passed)", async () => {
-        sendPasswordResetEmail.mockRejectedValueOnce({ code: "auth/user-not-found" });
+        (sendPasswordResetEmail as jest.Mock).mockRejectedValueOnce({ code: "auth/user-not-found" });
 
         renderForgotPassword();
 

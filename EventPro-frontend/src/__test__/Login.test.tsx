@@ -55,7 +55,7 @@ describe("Login Component", () => {
         );
 
         const emailInput = screen.getByLabelText(/email/i);
-        const passwordInput = screen.getByLabelText(/password/i);
+        const passwordInput = screen.getByLabelText(/^password$/i);
 
         fireEvent.change(emailInput, { target: { value: "invalid-email" } });
         fireEvent.change(passwordInput, { target: { value: "password123" } });
@@ -76,7 +76,7 @@ describe("Login Component", () => {
         );
 
         const emailInput = screen.getByLabelText(/email/i);
-        const passwordInput = screen.getByLabelText(/password/i);
+        const passwordInput = screen.getByLabelText(/^password$/i);
         const button = screen.getByRole("button", { name: /login/i });
 
         fireEvent.change(emailInput, { target: { value: "test@example.com" } });
@@ -107,7 +107,7 @@ describe("Login Component", () => {
             </MemoryRouter>
         );
 
-        expect(screen.getAllByText("Invalid credentials").length).toBe(2);
+        expect(screen.getAllByText("Invalid credentials")).toHaveLength(1);
     });
 
     test("redirects if user is already logged in", () => {

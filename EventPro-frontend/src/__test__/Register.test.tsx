@@ -62,7 +62,7 @@ describe("Register Component", () => {
     //         expect(screen.getByLabelText(/first name/i)).toBeInTheDocument();
     //         expect(screen.getByLabelText(/last name/i)).toBeInTheDocument();
     //         expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    //         expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
+    //         expect(screen.getByLabelText(/^password$/i)).toBeInTheDocument();
     //     });
     // });
 
@@ -124,10 +124,11 @@ describe("Register Component", () => {
             fireEvent.click(screen.getByText(/event planner/i).closest("button"));
             fireEvent.click(screen.getByRole("button", { name: /continue/i }));
 
-            fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: "John" } });
+            // Step 2 mounts after async role validation
+            fireEvent.change(await screen.findByLabelText(/first name/i), { target: { value: "John" } });
             fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: "Doe" } });
             fireEvent.change(screen.getByLabelText(/email/i), { target: { value: "test@example.com" } });
-            fireEvent.change(screen.getByLabelText(/password/i), { target: { value: "password123" } });
+            fireEvent.change(screen.getByLabelText(/^password$/i), { target: { value: "password123" } });
 
             fireEvent.submit(screen.getByRole("button", { name: /create account/i }).closest("form"));
 

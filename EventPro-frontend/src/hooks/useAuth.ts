@@ -5,7 +5,7 @@ import { useFetchEvents } from "./useEvents";
 import { useFetchSuppliers } from "./useSupplier";
 import { db } from "../firebase/firebase";
 import bcrypt from "bcryptjs";
-import Swal from "sweetalert2";
+import { notify } from "../lib/notify";
 import { useState } from "react";
 
 export const useAuthLogin = () => {
@@ -27,13 +27,7 @@ export const useAuthLogin = () => {
                 const userData = users.find(users => users.id === user.user.uid)
                 const userEvents = events.filter(event => event.user_id === user.user.uid)
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Signed in',
-                    text: 'Successfully Signed in',
-                    timer: 1000,
-                    showConfirmButton: false
-                })
+                notify.success('Successfully Signed in')
 
                 if (userData?.status === "deactivated" && userData?.role === "Event Planner") {
                     for (const event of userEvents) {
@@ -102,14 +96,7 @@ export const useAuthLogout = () => {
             last_active: serverTimestamp(),
         });
 
-        Swal.fire({
-            icon: 'success',
-            title: 'Sign out',
-            text: 'Successfully logout',
-            timer: 1000,
-            showConfirmButton: false
-
-        })
+        notify.success('Successfully logout')
 
         await signOut(auth)
     }
@@ -133,14 +120,6 @@ export const useAuthRegister = () => {
             console.log(userData)
 
             if (user) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Signed in',
-                    text: 'Successfully registered',
-                    timer: 1000,
-                    showConfirmButton: false
-                })
-
                 await setDoc(doc(db, "users", user.user.uid), {
                     first_name: userData?.first_name,
                     last_name: userData?.last_name,
@@ -167,6 +146,8 @@ export const useAuthRegister = () => {
                     contact_number: '',
                     created_at: serverTimestamp()
                 })
+
+                notify.success('Account created', 'Welcome to EventPro')
             }
 
         }
@@ -179,7 +160,7 @@ export const useAuthRegister = () => {
             }
             else { setError('') }
 
-            console.error(e``)
+            console.error(e)
         }
 
         finally {
