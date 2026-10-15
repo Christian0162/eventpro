@@ -1,19 +1,19 @@
 import type { LegacyProps } from "@/types/firestore";
 import { CheckCircle2 } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useFetchTransactionById } from "../hooks/useTransaction";
+import { useFetchTransactionById } from "@/hooks/useTransaction";
 import { useEffect, useMemo, useState } from "react";
-import { useFetchContract } from "../hooks/useContract";
-import { useFetchEvents } from "../hooks/useEvents";
-import { useFetchSuppliers } from "../hooks/useSupplier";
+import { useFetchContract } from "@/hooks/useContract";
+import { useFetchEvents } from "@/hooks/useEvents";
+import { useFetchSuppliers } from "@/hooks/useSupplier";
 import { lazy, Suspense } from "react";
-import PageLoading from "./PageLoading";
-import LoadingOverlay from "./LoadingOverlay";
+import PageLoading from "@/components/atoms/page-loading";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 
 
 export default function PaymentSuccess({ userData }: LegacyProps) {
 
-    const ContractModal = useMemo(() => lazy(() => import("./ContractModal")), []);
+    const ContractModal = useMemo(() => lazy(() => import("@/components/organisms/contract-modal")), []);
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");

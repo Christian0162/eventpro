@@ -3,9 +3,9 @@ import { Button, Dialog, DialogPanel } from "@headlessui/react";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { doc, updateDoc, serverTimestamp, addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { db } from "@/firebase/firebase";
 import Swal from "sweetalert2";
-import UploadWidget from "./UploadWidgen";
+import UploadWidget from "@/components/molecules/upload-widget";
 
 export default function DamagePenaltiesModal({ delivery, contractData, userData, deliveryId, onSuccess, eventData, type, report }: LegacyProps) {
     const [isOpen, setIsOpen] = useState(false);

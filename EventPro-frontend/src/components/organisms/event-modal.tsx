@@ -2,15 +2,15 @@ import type { LegacyProps } from "@/types/firestore";
 import { Button, Dialog, DialogPanel } from '@headlessui/react';
 import { MapPin, X, Eye, CalendarDays, CircleDollarSign, Mail, User, Bold, Phone, CircleAlert } from 'lucide-react';
 import { useState } from 'react';
-import { useFetchUserProfiles } from '../hooks/useProfile';
-import { useFetchReviews } from '../hooks/useReviews';
-import { useFetchUsers } from '../hooks/useUsers';
+import { useFetchUserProfiles } from '@/hooks/useProfile';
+import { useFetchReviews } from '@/hooks/useReviews';
+import { useFetchUsers } from '@/hooks/useUsers';
 import { formatDistanceToNow } from 'date-fns';
-import ProfileHover from './ProfileHover';
-import { eventStatusStyles, headerBackgrounds } from '../constants/categories';
-import { useFetchContract } from '../hooks/useContract';
-import { useFetchAllTransaction } from '../hooks/useTransaction';
-import PageLoading from './PageLoading';
+import ProfileHover from '@/components/molecules/profile-hover';
+import { eventStatusStyles, headerBackgrounds } from '@/constants/categories';
+import { useFetchContract } from '@/hooks/useContract';
+import { useFetchAllTransaction } from '@/hooks/useTransaction';
+import PageLoading from '@/components/atoms/page-loading';
 
 export default function EventModal({ isOpen, onClose, eventData, event_purpose, userData }: LegacyProps) {
     const [hoveredReviewerId, setHoveredReviewerId] = useState(null)

@@ -4,9 +4,9 @@ import { EmailAuthProvider, reauthenticateWithCredential, updateEmail } from 'fi
 import { X, Mail, Lock } from 'lucide-react'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
-import LoadingOverlay from './LoadingOverlay'
+import LoadingOverlay from '@/components/atoms/loading-overlay'
 import { doc, updateDoc } from 'firebase/firestore'
-import { db } from '../firebase/firebase'
+import { db } from '@/firebase/firebase'
 
 export default function EmailVerificationModal({ user }: LegacyProps) {
 

@@ -3,11 +3,11 @@ import { Button, Dialog, DialogPanel } from '@headlessui/react'
 import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore'
 import { Bot, X, Search } from "lucide-react"
 import { useState } from 'react'
-import { db } from '../firebase/firebase'
-import { useFetchReviews } from '../hooks/useReviews'
+import { db } from '@/firebase/firebase'
+import { useFetchReviews } from '@/hooks/useReviews'
 import nlp from 'compromise';
 import Fuse from 'fuse.js'
-import { useFetchSupplierServices } from '../hooks/useSupplier'
+import { useFetchSupplierServices } from '@/hooks/useSupplier'
 
 export default function AIModal({ ai_response, ai_shops }: LegacyProps) {
     const [isOpen, setIsOpen] = useState(false)

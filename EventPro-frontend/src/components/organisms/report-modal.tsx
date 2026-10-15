@@ -3,11 +3,11 @@ import { Button, Dialog, DialogPanel } from "@headlessui/react";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { serverTimestamp, addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { db } from "@/firebase/firebase";
 import Swal from "sweetalert2";
-import { termsOfCondition } from "../constants/categories";
-import UploadWidget from "./UploadWidgen";
-import { useFetchUsers } from "../hooks/useUsers";
+import { termsOfCondition } from "@/constants/categories";
+import UploadWidget from "@/components/molecules/upload-widget";
+import { useFetchUsers } from "@/hooks/useUsers";
 
 export default function ReportModal({ contractData, userData, eventData, supplierData }: LegacyProps) {
     const [isOpen, setIsOpen] = useState(false);

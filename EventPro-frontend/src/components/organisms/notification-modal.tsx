@@ -4,21 +4,21 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { useEffect, useState, useMemo } from 'react'
 import { deleteDoc, updateDoc, doc } from 'firebase/firestore'
 import { X, MessageSquare, Clock } from 'lucide-react'
-import { db } from '../firebase/firebase'
+import { db } from '@/firebase/firebase'
 import { formatDistanceToNow } from 'date-fns'
-import { useFetchUsers } from '../hooks/useUsers'
-import { useFetchUserProfiles } from '../hooks/useProfile'
-import { useFetchSuppliers } from '../hooks/useSupplier'
-import { useFetchEvents } from "../hooks/useEvents";
-import { useFetchContract } from "../hooks/useContract";
-import { useFetchAllReports } from "../hooks/useReports";
-import { ReportReview } from "./ReviewModal";
+import { useFetchUsers } from '@/hooks/useUsers'
+import { useFetchUserProfiles } from '@/hooks/useProfile'
+import { useFetchSuppliers } from '@/hooks/useSupplier'
+import { useFetchEvents } from "@/hooks/useEvents";
+import { useFetchContract } from "@/hooks/useContract";
+import { useFetchAllReports } from "@/hooks/useReports";
+import { ReportReview } from "@/components/organisms/review-modal";
 import { lazy, Suspense } from "react";
-import LoadingOverlay from "./LoadingOverlay";
+import LoadingOverlay from "@/components/atoms/loading-overlay";
 
 export default function NotificationModal({ notification, userData }: LegacyProps) {
 
-    const EventModal = useMemo(() => lazy(() => import("./EventModal")), [])
+    const EventModal = useMemo(() => lazy(() => import("@/components/organisms/event-modal")), [])
     const [isOpen, setIsOpen] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const { users } = useFetchUsers()
@@ -29,7 +29,7 @@ export default function NotificationModal({ notification, userData }: LegacyProp
     const { contracts } = useFetchContract()
     const [selectedItem, setSelectedItem] = useState(null);
     const { reports } = useFetchAllReports()
-    const ContractModal = useMemo(() => lazy(() => import("./ContractModal")), []);
+    const ContractModal = useMemo(() => lazy(() => import("@/components/organisms/contract-modal")), []);
     const [isContractModalOpen, setIsContractModalOpen] = useState(false);
     const [selectedContract, setSelectedContract] = useState(null)
     const [isEventModalOpen, setIsEventModalOpen] = useState(false);

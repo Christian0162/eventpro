@@ -2,10 +2,10 @@ import type { LegacyProps } from "@/types/firestore";
 import { useState } from "react"
 import { Button, Dialog, DialogPanel } from "@headlessui/react"
 import { X, Star, ThumbsUp, MessageSquare, Edit3 } from 'lucide-react'
-import UploadWidget from "./UploadWidgen"
-import LoadingOverlay from "./LoadingOverlay"
+import UploadWidget from "@/components/molecules/upload-widget"
+import LoadingOverlay from "@/components/atoms/loading-overlay"
 import { doc, updateDoc } from "firebase/firestore"
-import { db } from "../firebase/firebase"
+import { db } from "@/firebase/firebase"
 
 export const ShopBackgroundModal = ({ userData }: LegacyProps) => {
   const [isOpen, setIsOpen] = useState(false)

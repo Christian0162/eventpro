@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Logo } from "@/components/shared/Logo"
+import { Logo } from "@/components/atoms/logo"
 
 const LINKS = [
   { to: "/", label: "Home" },

@@ -3,11 +3,11 @@ import { Button, Dialog, DialogPanel } from '@headlessui/react'
 import { X, Container, MessageSquareWarning, SquarePen, PackagePlus, PhilippinePeso } from 'lucide-react'
 import { useState } from 'react'
 import Select from 'react-select'
-import { planTypeOptions, paymentNoticeOptions } from '../constants/categories'
+import { planTypeOptions, paymentNoticeOptions } from '@/constants/categories'
 import { addDoc, collection } from 'firebase/firestore'
-import { db } from '../firebase/firebase'
+import { db } from '@/firebase/firebase'
 import Swal from 'sweetalert2'
-import { useFetchSupplierServices } from '../hooks/useSupplier'
+import { useFetchSupplierServices } from '@/hooks/useSupplier'
 
 export default function ServiceModal({ userData, supplierData }: LegacyProps) {
 

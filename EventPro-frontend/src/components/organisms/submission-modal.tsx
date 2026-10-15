@@ -2,15 +2,15 @@ import type { LegacyProps } from "@/types/firestore";
 import { Dialog, DialogPanel, Button } from '@headlessui/react'
 import { useState, useEffect, useRef } from 'react'
 import { X, MapPin, MapPinOff, Truck, Phone } from 'lucide-react'
-import UploadWidget from './UploadWidgen'
+import UploadWidget from '@/components/molecules/upload-widget'
 import Select from 'react-select'
 import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore'
-import { db } from '../firebase/firebase'
+import { db } from '@/firebase/firebase'
 import Swal from 'sweetalert2'
-import AddressAutocomplete from './AddressAutoComplete'
-import { serviceType } from '../constants/categories'
-import { useFetchUserProfiles } from '../hooks/useProfile'
-import LoadingOverlay from './LoadingOverlay'
+import AddressAutocomplete from '@/components/molecules/address-auto-complete'
+import { serviceType } from '@/constants/categories'
+import { useFetchUserProfiles } from '@/hooks/useProfile'
+import LoadingOverlay from '@/components/atoms/loading-overlay'
 
 export default function SubmissionModal({ contract, supplierData, eventData }: LegacyProps) {
     const [isOpen, setIsOpen] = useState(false)
