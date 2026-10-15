@@ -52,7 +52,7 @@ export default function App() {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Public {...session}><HomePage user={user} /></Public>} />
-            <Route path="/register" element={<Public {...session}><Register user={user} /></Public>} />
+            <Route path="/register" element={<Register user={user} />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<Public {...session}><ResetPassword /></Public>} />
             <Route

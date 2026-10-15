@@ -6,12 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { auth } from "@/firebase/firebase"
 import { useAuthRegister } from "@/hooks/useAuth"
 import { registerSchema, type RegisterValues } from "@/lib/validations/auth"
-import { AuthCard } from "@/features/auth/AuthCard"
+import { AuthSplit } from "@/features/auth/AuthSplit"
 import { RoleStep } from "@/features/auth/RoleStep"
 import { PasswordInput } from "@/components/molecules/password-input"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+
+const labelClass = "text-xs font-medium uppercase tracking-wider text-muted-foreground"
+const fieldClass = "h-11 rounded-full px-4"
 
 export default function Register({ user }: { user: unknown }) {
   const [step, setStep] = useState<1 | 2>(1)
@@ -33,7 +36,7 @@ export default function Register({ user }: { user: unknown }) {
     register(auth, v.email, v.password, { first_name: v.first_name, last_name: v.last_name, role: v.role })
 
   return (
-    <AuthCard
+    <AuthSplit
       title="Create your account"
       description={step === 1 ? "First, tell us how you'll use EventPro." : "Just a few details to get you started."}
       footer={
@@ -47,7 +50,7 @@ export default function Register({ user }: { user: unknown }) {
     >
       <Title>Register | EventPro</Title>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" noValidate>
           {step === 1 ? (
             <>
               <RoleStep
@@ -55,7 +58,7 @@ export default function Register({ user }: { user: unknown }) {
                 error={form.formState.errors.role?.message}
                 onChange={(r) => form.setValue("role", r, { shouldValidate: true })}
               />
-              <Button type="button" className="w-full" onClick={goToDetails}>
+              <Button type="button" size="lg" className="h-11 w-full rounded-full" onClick={goToDetails}>
                 Continue
               </Button>
             </>
@@ -75,9 +78,9 @@ export default function Register({ user }: { user: unknown }) {
                   name="first_name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>First name</FormLabel>
+                      <FormLabel className={labelClass}>First name</FormLabel>
                       <FormControl>
-                        <Input autoComplete="given-name" {...field} />
+                        <Input className={fieldClass} autoComplete="given-name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -88,9 +91,9 @@ export default function Register({ user }: { user: unknown }) {
                   name="last_name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Last name</FormLabel>
+                      <FormLabel className={labelClass}>Last name</FormLabel>
                       <FormControl>
-                        <Input autoComplete="family-name" {...field} />
+                        <Input className={fieldClass} autoComplete="family-name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -102,9 +105,9 @@ export default function Register({ user }: { user: unknown }) {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel className={labelClass}>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" autoComplete="email" placeholder="you@example.com" {...field} />
+                      <Input type="email" autoComplete="email" placeholder="you@example.com" className={fieldClass} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -115,9 +118,9 @@ export default function Register({ user }: { user: unknown }) {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel className={labelClass}>Password</FormLabel>
                     <FormControl>
-                      <PasswordInput autoComplete="new-password" {...field} />
+                      <PasswordInput autoComplete="new-password" className={fieldClass} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -128,13 +131,13 @@ export default function Register({ user }: { user: unknown }) {
                   {registerError}
                 </p>
               )}
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" size="lg" className="h-11 w-full rounded-full" disabled={isLoading}>
                 {isLoading ? "Creating account…" : "Create account"}
               </Button>
             </>
           )}
         </form>
       </Form>
-    </AuthCard>
+    </AuthSplit>
   )
 }
