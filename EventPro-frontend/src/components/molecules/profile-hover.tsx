@@ -5,8 +5,8 @@ import { addDoc, collection, getDocs, query, serverTimestamp, where } from 'fire
 import { db } from "@/firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
-import { useFetchReviews } from "@/hooks/useReviews";
-import { useFetchUserProfiles } from "@/hooks/useProfile";
+import { useFetchReviews } from "@/hooks/use-reviews";
+import { useFetchUserProfiles } from "@/hooks/use-profile";
 
 export default function ProfileHover({ hoveredReviewer, user, review }: LegacyProps) {
     const [isCreatingContact, setIsCreatingContact] = useState(false)

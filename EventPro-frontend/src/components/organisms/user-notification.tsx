@@ -1,16 +1,16 @@
 import type { LegacyProps } from "@/types/firestore";
 import { useMemo, useState } from "react"
-import { useFetchNotificationsById } from "@/hooks/useNotifications"
-import { BellDot, X, Check, Settings, MessageSquare } from "lucide-react";
+import { useFetchNotificationsById } from "@/hooks/use-notifications"
+import { Bell, BellDot, X, Check, Settings, MessageSquare } from "lucide-react";
 import { db } from "@/firebase/firebase"
 import { doc, updateDoc } from "firebase/firestore"
 import { Link } from "react-router-dom";
-import { Dialog, DialogPanel } from "@headlessui/react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { formatDistanceToNow } from "date-fns";
-import { useFetchEvents } from "@/hooks/useEvents";
-import { useFetchContract } from "@/hooks/useContract";
-import { useFetchSuppliers } from "@/hooks/useSupplier";
-import { useFetchAllReports } from "@/hooks/useReports";
+import { useFetchEvents } from "@/hooks/use-events";
+import { useFetchContract } from "@/hooks/use-contract";
+import { useFetchSuppliers } from "@/hooks/use-supplier";
+import { useFetchAllReports } from "@/hooks/use-reports";
 import { ReportReview } from "@/components/organisms/review-modal";
 import { lazy, Suspense } from "react";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
@@ -163,14 +163,13 @@ export default function UserNotification({ userData }: LegacyProps) {
                             setIsOpen(false)
                         }
                     }}
-                    className="relative transition-all duration-200 focus:outline-none focus:bg-blue-50 focus:text-blue-700 focus:shadow-sm focus:ring-2 focus:ring-blue-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-4 py-2 rounded-full text-sm flex items-center justify-center group"
+                    aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : "Notifications"}
+                    className="relative flex size-9 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
                 >
                     {unreadCount > 0 && !isReading && (
-                        <div className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white text-xs font-medium rounded-full flex items-center justify-center">
-                            {unreadCount > 9 ? '9+' : unreadCount}
-                        </div>
+                        <span className="absolute right-2 top-2 size-2 rounded-full bg-red-500 ring-2 ring-background" />
                     )}
-                    <BellDot size={20} />
+                    <Bell size={20} />
                 </button>
 
                 {isOpen && (
@@ -284,12 +283,9 @@ export default function UserNotification({ userData }: LegacyProps) {
             </div>
 
             {/* Notification Modal */}
-            <Dialog as="div" open={modalOpen} onClose={() => close()} className="relative z-[50]">
-                <div className="fixed inset-0 bg-black/30" />
-                <div className="fixed inset-0 flex items-center justify-center p-4">
-                    <DialogPanel
-                        className="w-full max-w-lg rounded-2xl bg-white shadow-2xl p-6 mt-15 relative transition-all"
-                    >
+            <Dialog open={modalOpen} onOpenChange={(open) => { if (!open) (() => close())() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-lg rounded-2xl bg-white shadow-2xl p-6">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                         {/* Close button */}
                         <button
                             onClick={() => close()}
@@ -370,9 +366,8 @@ export default function UserNotification({ userData }: LegacyProps) {
                                 </div>
                             </div>
                         )}
-                    </DialogPanel>
-                </div>
-            </Dialog>
+                    </DialogContent>
+</Dialog>
         </>
     )
 }

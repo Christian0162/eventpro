@@ -1,5 +1,6 @@
 import type { Doc, LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel, } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { useEffect, useState } from 'react'
 import { X, Star, ThumbsUp, MessageSquare } from 'lucide-react'
 import { addDoc, updateDoc, collection, serverTimestamp, doc, query, where, deleteDoc, getDocs, arrayUnion, increment } from 'firebase/firestore'
@@ -8,11 +9,11 @@ import { auth, db } from '@/firebase/firebase'
 import Swal from 'sweetalert2'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
 import { statusStyles } from '@/constants/categories'
-import { useFetchAllTransaction } from '@/hooks/useTransaction'
-import { useCreateRefund } from '@/hooks/useRefund'
-import { useFetchContract } from '@/hooks/useContract'
-import { useFetchUsers } from '@/hooks/useUsers'
-import { useFetchEvents } from '@/hooks/useEvents'
+import { useFetchAllTransaction } from '@/hooks/use-transaction'
+import { useCreateRefund } from '@/hooks/use-refund'
+import { useFetchContract } from '@/hooks/use-contract'
+import { useFetchUsers } from '@/hooks/use-users'
+import { useFetchEvents } from '@/hooks/use-events'
 
 export const Review = ({ reviewed_id, reviewer_name, eventData, contractData }: LegacyProps) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -114,14 +115,9 @@ export const Review = ({ reviewed_id, reviewer_name, eventData, contractData }: 
         <>
             <Button onClick={open} className={'transition-all duration-100 hover:bg-blue-700 px-6 py-2 text-sm rounded-md bg-blue-600 text-white '}>Review</Button>
 
-            <Dialog open={isOpen} as='div' className={'z-50 relative focus:outline-none'} onClose={close}>
-                <div className="fixed inset-0 bg-black/25 " />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-xl mt-18 rounded-2xl bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <LoadingOverlay isLoading={isSubmitting} message='Processing..' />
                             <div className='relative'>
                                 <button
@@ -244,10 +240,8 @@ export const Review = ({ reviewed_id, reviewer_name, eventData, contractData }: 
                                     </p>
                                 </div>
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }
@@ -368,14 +362,9 @@ export const RejectReview = ({ id, event_id, supplier_id, userData, event_name, 
         <>
             <Button onClick={open} className={`${className}`}>Reject</Button>
 
-            <Dialog open={isOpen} as='div' className={'z-999 relative focus:outline-none'} onClose={close}>
-                <div className="fixed inset-0 bg-black/25 " />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-3xl rounded-2xl bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-3xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <LoadingOverlay isLoading={isSubmitting} message='Processing..' />
                             <div className='relative'>
                                 <button
@@ -446,10 +435,8 @@ export const RejectReview = ({ id, event_id, supplier_id, userData, event_name, 
                                     </p>
                                 </div>
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }
@@ -826,11 +813,9 @@ export const ReportReview = ({ report, userData, response, eventData }: LegacyPr
             </Button>
 
             {/* First Dialog */}
-            <Dialog open={isOpen} as="div" className="relative z-[999]" onClose={close}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel transition className="w-full max-w-3xl z-10 rounded-2xl bg-white shadow-2xl p-8 duration-200 relative">
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-3xl rounded-2xl bg-white shadow-2xl p-8">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             {/* Close Button */}
                             <button
                                 onClick={close}
@@ -1017,21 +1002,12 @@ export const ReportReview = ({ report, userData, response, eventData }: LegacyPr
                                     </div>
                                 )}
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div >
-            </Dialog >
+                        </DialogContent>
+</Dialog>
 
-            <Dialog
-                open={isRejectOpen}
-                as="div"
-                className="relative z-[1000]"
-                onClose={() => setIsRejectOpen(false)}
-            >
-                <div className="fixed inset-0 bg-black/30" />
-                <div className="fixed inset-0 flex items-center justify-center p-4">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel className="w-full max-w-md bg-white z-50 rounded-xl shadow-2xl p-6 relative">
+            <Dialog open={isRejectOpen} onOpenChange={(open) => { if (!open) (() => setIsRejectOpen(false))() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-md bg-white rounded-xl shadow-2xl p-6">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <button
                                 onClick={() => { setIsRejectOpen(false); setRejectReason('') }}
                                 className="absolute top-3 right-3 p-2 rounded-full hover:bg-gray-100"
@@ -1070,10 +1046,8 @@ export const ReportReview = ({ report, userData, response, eventData }: LegacyPr
                                     {isRejectSubmitting ? "Processing..." : "Confirm Reject"}
                                 </button>
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     );
 };

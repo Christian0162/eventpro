@@ -1,6 +1,7 @@
 import type { LegacyProps } from "@/types/firestore";
 import { useState } from "react"
-import { Button, Dialog, DialogPanel } from "@headlessui/react"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { X, Star, ThumbsUp, MessageSquare, Edit3 } from 'lucide-react'
 import UploadWidget from "@/components/molecules/upload-widget"
 import LoadingOverlay from "@/components/atoms/loading-overlay"
@@ -46,14 +47,9 @@ export const ShopBackgroundModal = ({ userData }: LegacyProps) => {
         Edit
       </Button>
 
-      <Dialog open={isOpen} as='div' className={'z-50 relative focus:outline-none'} onClose={close}>
-        <div className="fixed inset-0 bg-black/25 " />
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
-            <DialogPanel
-              transition
-              className="w-full max-w-xl mt-18 rounded-2xl bg-white shadow-2xl duration-300 "
-            >
+      <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
               <div className='relative px-8 py-4 bg-gray-100 rounded-t-xl'>
                 <button
                   onClick={close}
@@ -85,10 +81,8 @@ export const ShopBackgroundModal = ({ userData }: LegacyProps) => {
                   <LoadingOverlay isLoading={isBackgroundLoading} message="Processing.." />
                 )}
               </div>
-            </DialogPanel>
-          </div>
-        </div >
-      </Dialog >
+            </DialogContent>
+</Dialog>
     </>
   )
 }

@@ -1,10 +1,11 @@
 import type { LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel, } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { X, Eye, EyeOff, TriangleAlert, AlertTriangle, User } from 'lucide-react'
 import { useState } from 'react'
 import { EmailAuthProvider, reauthenticateWithCredential, signOut } from 'firebase/auth'
-import { useFetchEvents } from '@/hooks/useEvents'
-import { useFetchSuppliers } from '@/hooks/useSupplier'
+import { useFetchEvents } from '@/hooks/use-events'
+import { useFetchSuppliers } from '@/hooks/use-supplier'
 import { arrayUnion, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { db, auth } from '@/firebase/firebase'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
@@ -189,14 +190,9 @@ export default function DeactivateModal({ user, userData }: LegacyProps) {
             </Button>
 
 
-            <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none" onClose={close}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-2xl rounded-2xl mt-18 bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-2xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
 
                             <LoadingOverlay isLoading={isSubmitting} message='Processing..' />
 
@@ -337,10 +333,8 @@ export default function DeactivateModal({ user, userData }: LegacyProps) {
                                     </div>
                                 </div>
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

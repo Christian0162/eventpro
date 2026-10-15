@@ -1,11 +1,11 @@
 import type { LegacyProps } from "@/types/firestore";
 import { CheckCircle2 } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useFetchTransactionById } from "@/hooks/useTransaction";
+import { useFetchTransactionById } from "@/hooks/use-transaction";
 import { useEffect, useMemo, useState } from "react";
-import { useFetchContract } from "@/hooks/useContract";
-import { useFetchEvents } from "@/hooks/useEvents";
-import { useFetchSuppliers } from "@/hooks/useSupplier";
+import { useFetchContract } from "@/hooks/use-contract";
+import { useFetchEvents } from "@/hooks/use-events";
+import { useFetchSuppliers } from "@/hooks/use-supplier";
 import { lazy, Suspense } from "react";
 import PageLoading from "@/components/atoms/page-loading";
 import LoadingOverlay from "@/components/atoms/loading-overlay";

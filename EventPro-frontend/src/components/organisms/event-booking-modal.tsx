@@ -1,5 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel } from "@headlessui/react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { X, CalendarDays } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -45,16 +46,9 @@ export default function EventBookingModal({ events = [], activeContracts = [], s
                 Book Supplier
             </Button>
 
-            <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none" onClose={close}>
-                {/* Overlay */}
-                <div className="fixed inset-0 bg-black/40 transition-opacity duration-300" />
-
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="overflow-hidden w-full max-w-4xl mt-18 rounded-2xl bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-4xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             {/* Header */}
                             <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200 bg-gray-50">
                                 <h2 className="text-xl font-semibold text-gray-800">
@@ -143,10 +137,8 @@ export default function EventBookingModal({ events = [], activeContracts = [], s
                                     Book Now
                                 </button>
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     );
 }

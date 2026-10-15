@@ -1,5 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
-import { Dialog, DialogPanel, Button } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { useState, useEffect, useRef } from 'react'
 import { X, MapPin, MapPinOff, Truck, Phone } from 'lucide-react'
 import UploadWidget from '@/components/molecules/upload-widget'
@@ -9,7 +10,7 @@ import { db } from '@/firebase/firebase'
 import Swal from 'sweetalert2'
 import AddressAutocomplete from '@/components/molecules/address-auto-complete'
 import { serviceType } from '@/constants/categories'
-import { useFetchUserProfiles } from '@/hooks/useProfile'
+import { useFetchUserProfiles } from '@/hooks/use-profile'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
 
 export default function SubmissionModal({ contract, supplierData, eventData }: LegacyProps) {
@@ -252,11 +253,9 @@ export default function SubmissionModal({ contract, supplierData, eventData }: L
                 Submit Delivery
             </Button>
 
-            <Dialog open={isOpen} as="div" className="relative z-999" onClose={close}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel className="w-full max-w-3xl rounded-2xl bg-white shadow-2xl">
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-3xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <div className="relative px-8 py-6">
                                 <button
                                     onClick={close}
@@ -458,10 +457,8 @@ export default function SubmissionModal({ contract, supplierData, eventData }: L
                                     )}
                                 </div>
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

@@ -1,15 +1,16 @@
 import type { Doc, LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore'
 import { Bot, X, Search } from "lucide-react"
 import { useState } from 'react'
 import { db } from '@/firebase/firebase'
-import { useFetchReviews } from '@/hooks/useReviews'
+import { useFetchReviews } from '@/hooks/use-reviews'
 import nlp from 'compromise';
 import Fuse from 'fuse.js'
-import { useFetchSupplierServices } from '@/hooks/useSupplier'
+import { useFetchSupplierServices } from '@/hooks/use-supplier'
 
-export default function AIModal({ ai_response, ai_shops }: LegacyProps) {
+export default function AIModal({ ai_response, ai_shops, trigger }: LegacyProps) {
     const [isOpen, setIsOpen] = useState(false)
     const [prompt, setPrompt] = useState('')
     const [budget, setBudget] = useState('') // New budget input
@@ -204,22 +205,19 @@ export default function AIModal({ ai_response, ai_shops }: LegacyProps) {
 
     return (
         <>
-            <Button
-                onClick={open}
-                className="relative overflow-hidden transition-all rounded-full hover:scale-105 px-6 py-2 text-white bg-gradient-to-r from-blue-600 via-purple-500 to-violet-600 bg-[length:200%_200%] duration-500 ease-in-out hover:bg-[position:100%_100%] flex items-center gap-3"
-            >
-                <Bot size={21} />
-                <span className="hidden sm:hidden md:hidden lg:hidden xl:block">AI Search</span>
-            </Button>
+            {trigger ? trigger(open) : (
+                <Button
+                    onClick={open}
+                    className="relative overflow-hidden transition-all rounded-full hover:scale-105 px-6 py-2 text-white bg-gradient-to-r from-blue-600 via-purple-500 to-violet-600 bg-[length:200%_200%] duration-500 ease-in-out hover:bg-[position:100%_100%] flex items-center gap-3"
+                >
+                    <Bot size={21} />
+                    <span className="hidden sm:hidden md:hidden lg:hidden xl:block">AI Search</span>
+                </Button>
+            )}
 
-            <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none" onClose={close}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-3xl rounded-2xl bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-3xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <div className='relative px-10 py-7 bg-gray-100 rounded-t-xl'>
                                 <button
                                     onClick={close}
@@ -274,10 +272,8 @@ export default function AIModal({ ai_response, ai_shops }: LegacyProps) {
                                     </button>
                                 </div>
                             </form>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

@@ -1,5 +1,7 @@
 import type { Doc, LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { useEffect, useState } from 'react'
 import { MapPin, CircleCheckBig, Clock, Phone, Mail, X, MessageCircleMore, Heart, ChevronsLeftRightEllipsis, Check } from 'lucide-react'
 import { db, auth } from '@/firebase/firebase'
@@ -14,11 +16,11 @@ import ServiceModal from '@/components/organisms/service-modal'
 import Select from 'react-select'
 import { AboutOurBusiessEdit } from '@/components/organisms/update-modal'
 import Swal from 'sweetalert2'
-import { useFetchEventsById } from '@/hooks/useEvents'
-import { useFetchContract } from '@/hooks/useContract'
+import { useFetchEventsById } from '@/hooks/use-events'
+import { useFetchContract } from '@/hooks/use-contract'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
-import { useFetchUserProfiles } from '@/hooks/useProfile'
-import { useFetchUsers } from '@/hooks/useUsers'
+import { useFetchUserProfiles } from '@/hooks/use-profile'
+import { useFetchUsers } from '@/hooks/use-users'
 import ProfileHover from '@/components/molecules/profile-hover'
 import AvailabilityPicker from '@/components/molecules/availability-picker'
 import EventBookingModal from '@/components/organisms/event-booking-modal'
@@ -200,13 +202,9 @@ export default function SupplierModal({ isOpen, onClose, supplierData, applicati
 
     return (
         <>
-            <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none" onClose={onClose}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            className="w-full max-w-5xl mt-20 rounded-2xl bg-white shadow-2xl8"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-5xl rounded-2xl bg-white">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             {(isCreatingContact || isCreatingFavorites) && (
                                 <LoadingOverlay isLoading={isCreatingContact || isCreatingFavorites} message='Processing..' />
                             )}
@@ -669,10 +667,8 @@ export default function SupplierModal({ isOpen, onClose, supplierData, applicati
                                     </div>
                                 )}
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div >
-            </Dialog >
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

@@ -1,6 +1,7 @@
 import type { LegacyProps } from "@/types/firestore";
 import type { Doc } from "@/types/firestore";
-import { Button, Dialog, DialogPanel, } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { useEffect, useState, useRef } from 'react'
 import { X, Check, ArrowLeftRight } from 'lucide-react'
 import { FileText, MapPin, Clock, Wallet, ChevronDown, Calendar, Building, User, TriangleAlert, CreditCard, PhilippinePeso, Package } from 'lucide-react'
@@ -8,19 +9,19 @@ import { collection, doc, getDocs, query, where, addDoc, serverTimestamp, update
 import { db, auth } from '@/firebase/firebase'
 import { paymentMethods, statusStyles } from '@/constants/categories'
 import { nanoid } from 'nanoid'
-import { useCreatePayment } from '@/hooks/usePayment'
-import { useFetchAllTransaction, useFetchTransactionById } from '@/hooks/useTransaction'
+import { useCreatePayment } from '@/hooks/use-payment'
+import { useFetchAllTransaction, useFetchTransactionById } from '@/hooks/use-transaction'
 import SubmissionModal from '@/components/organisms/submission-modal'
-import { useFetchDeliveries } from '@/hooks/useDeliveries'
+import { useFetchDeliveries } from '@/hooks/use-deliveries'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import LoadingOverlay from '@/components/atoms/loading-overlay'
 import { RejectReview } from '@/components/organisms/review-modal'
-import { useFetchUsers } from '@/hooks/useUsers'
-import { useFetchContract } from '@/hooks/useContract'
+import { useFetchUsers } from '@/hooks/use-users'
+import { useFetchContract } from '@/hooks/use-contract'
 import DamagePenaltiesModal from '@/components/organisms/damage-penalties-modal'
 import ReportModal from '@/components/organisms/report-modal'
-import { useFetchAllReports } from '@/hooks/useReports'
+import { useFetchAllReports } from '@/hooks/use-reports'
 import PageLoading from '@/components/atoms/page-loading'
 
 export default function ContractModal({ isOpen, onClose, userData, event_id, supplier_id, eventData, supplierData, user_id }: LegacyProps) {
@@ -526,13 +527,9 @@ export default function ContractModal({ isOpen, onClose, userData, event_id, sup
 
     return (
         <>
-            <Dialog open={isOpen} as='div' className={'z-999 relative focus:outline-none'} onClose={onClose}>
-                <div className="fixed inset-0 bg-black/25 " />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            className="w-full max-w-5xl rounded-2xl bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-5xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <div className='relative'>
                                 <button
                                     onClick={onClose}
@@ -1338,10 +1335,8 @@ export default function ContractModal({ isOpen, onClose, userData, event_id, sup
                                 </div>
 
                             </div>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

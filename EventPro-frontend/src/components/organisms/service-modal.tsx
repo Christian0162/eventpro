@@ -1,5 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { X, Container, MessageSquareWarning, SquarePen, PackagePlus, PhilippinePeso } from 'lucide-react'
 import { useState } from 'react'
 import Select from 'react-select'
@@ -7,7 +8,7 @@ import { planTypeOptions, paymentNoticeOptions } from '@/constants/categories'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '@/firebase/firebase'
 import Swal from 'sweetalert2'
-import { useFetchSupplierServices } from '@/hooks/useSupplier'
+import { useFetchSupplierServices } from '@/hooks/use-supplier'
 
 export default function ServiceModal({ userData, supplierData }: LegacyProps) {
 
@@ -136,14 +137,9 @@ export default function ServiceModal({ userData, supplierData }: LegacyProps) {
                 </Button>
             )}
 
-            <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none" onClose={close}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-3xl rounded-2xl mt-17 bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-3xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             <div className='relative px-10 py-7 bg-gray-100 rounded-t-xl'>
                                 <button
                                     onClick={close}
@@ -241,10 +237,8 @@ export default function ServiceModal({ userData, supplierData }: LegacyProps) {
                                     </button>
                                 </div>
                             </form>
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

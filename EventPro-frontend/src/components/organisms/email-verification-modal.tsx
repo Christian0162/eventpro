@@ -1,5 +1,6 @@
 import type { LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { EmailAuthProvider, reauthenticateWithCredential, updateEmail } from 'firebase/auth'
 import { X, Mail, Lock } from 'lucide-react'
 import { useState } from 'react'
@@ -121,14 +122,9 @@ export default function EmailVerificationModal({ user }: LegacyProps) {
                 Change
             </Button>
 
-            <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none" onClose={close}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="relative w-full max-w-md rounded-2xl mt-18 bg-white shadow-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-md rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             {/* Header */}
                             <div className="flex items-center justify-between p-6">
                                 <div className="flex items-center gap-3 font-medium text-lg">
@@ -213,10 +209,8 @@ export default function EmailVerificationModal({ user }: LegacyProps) {
                                     </div>
                                 </div>
                             )}
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     )
 }

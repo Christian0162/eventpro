@@ -1,15 +1,16 @@
 import type { LegacyProps } from "@/types/firestore";
-import { Button, Dialog, DialogPanel } from '@headlessui/react';
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { PlainButton as Button } from "@/components/atoms/plain-button"
 import { MapPin, X, Eye, CalendarDays, CircleDollarSign, Mail, User, Bold, Phone, CircleAlert } from 'lucide-react';
 import { useState } from 'react';
-import { useFetchUserProfiles } from '@/hooks/useProfile';
-import { useFetchReviews } from '@/hooks/useReviews';
-import { useFetchUsers } from '@/hooks/useUsers';
+import { useFetchUserProfiles } from '@/hooks/use-profile';
+import { useFetchReviews } from '@/hooks/use-reviews';
+import { useFetchUsers } from '@/hooks/use-users';
 import { formatDistanceToNow } from 'date-fns';
 import ProfileHover from '@/components/molecules/profile-hover';
 import { eventStatusStyles, headerBackgrounds } from '@/constants/categories';
-import { useFetchContract } from '@/hooks/useContract';
-import { useFetchAllTransaction } from '@/hooks/useTransaction';
+import { useFetchContract } from '@/hooks/use-contract';
+import { useFetchAllTransaction } from '@/hooks/use-transaction';
 import PageLoading from '@/components/atoms/page-loading';
 
 export default function EventModal({ isOpen, onClose, eventData, event_purpose, userData }: LegacyProps) {
@@ -60,14 +61,9 @@ export default function EventModal({ isOpen, onClose, eventData, event_purpose, 
     return (
         <>
         
-            <Dialog open={isOpen} as="div" className="relative z-100 focus:outline-none" onClose={onClose}>
-                <div className="fixed inset-0 bg-black/25" />
-                <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4">
-                        <DialogPanel
-                            transition
-                            className="w-full max-w-4xl mt-18 rounded-2xl bg-white shadow-2xl duration-300"
-                        >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-4xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                             {isAllLoading && (
                                 <PageLoading />
                             )}
@@ -304,10 +300,8 @@ export default function EventModal({ isOpen, onClose, eventData, event_purpose, 
                                     </div>
                                 </>
                             )}
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
+                        </DialogContent>
+</Dialog>
         </>
     );
 }

@@ -1,3 +1,4 @@
+import { FileDown } from "lucide-react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
@@ -107,9 +108,11 @@ export default function GenerateReport({
     return (
         <button
             onClick={generateReport}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all"
+            title="Generate report"
+            aria-label="Generate report"
+            className="flex size-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none"
         >
-            Generate Report
+            <FileDown className="size-5" />
         </button>
     );
 }

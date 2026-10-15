@@ -1,17 +1,17 @@
 import type { LegacyProps } from "@/types/firestore";
 import type { Doc } from "@/types/firestore";
-import { Dialog, DialogPanel } from '@headlessui/react'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { useEffect, useState, useMemo } from 'react'
 import { deleteDoc, updateDoc, doc } from 'firebase/firestore'
 import { X, MessageSquare, Clock } from 'lucide-react'
 import { db } from '@/firebase/firebase'
 import { formatDistanceToNow } from 'date-fns'
-import { useFetchUsers } from '@/hooks/useUsers'
-import { useFetchUserProfiles } from '@/hooks/useProfile'
-import { useFetchSuppliers } from '@/hooks/useSupplier'
-import { useFetchEvents } from "@/hooks/useEvents";
-import { useFetchContract } from "@/hooks/useContract";
-import { useFetchAllReports } from "@/hooks/useReports";
+import { useFetchUsers } from '@/hooks/use-users'
+import { useFetchUserProfiles } from '@/hooks/use-profile'
+import { useFetchSuppliers } from '@/hooks/use-supplier'
+import { useFetchEvents } from "@/hooks/use-events";
+import { useFetchContract } from "@/hooks/use-contract";
+import { useFetchAllReports } from "@/hooks/use-reports";
 import { ReportReview } from "@/components/organisms/review-modal";
 import { lazy, Suspense } from "react";
 import LoadingOverlay from "@/components/atoms/loading-overlay";
@@ -197,18 +197,9 @@ export default function NotificationModal({ notification, userData }: LegacyProp
             </button>
 
             {/* Modal */}
-            <Dialog
-                open={isOpen}
-                as="div"
-                className={'relative z-[49] focus:outline-none'}
-                onClose={close}
-            >
-                {/* Overlay */}
-                <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
-                <div className="fixed inset-0 z-10 flex items-center justify-center p-4">
-                    <DialogPanel
-                        className="w-full max-w-2xl relative rounded-2xl bg-white shadow-2xl transform transition-all"
-                    >
+            <Dialog open={isOpen} onOpenChange={(open) => { if (!open) close() }}>
+<DialogContent showCloseButton={false} aria-describedby={undefined} className="block gap-0 border-0 bg-white p-0 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full sm:max-w-2xl rounded-2xl bg-white shadow-2xl">
+<DialogTitle className="sr-only">Dialog</DialogTitle>
                         {/* Close button */}
                         <button
                             onClick={close}
@@ -282,9 +273,8 @@ export default function NotificationModal({ notification, userData }: LegacyProp
                                 )}
                             </div>
                         </div>
-                    </DialogPanel>
-                </div>
-            </Dialog>
+                    </DialogContent>
+</Dialog>
         </>
     )
 }
